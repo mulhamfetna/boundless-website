@@ -1,0 +1,26 @@
+baseURL = "https://boundless.example/"
+title = "Boundless Academic Services"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+enableGitInfo = false
+summaryLength = 30
+
+# Build must be loud about problems rather than silently shipping them.
+[build]
+  writeStats = true
+
+[taxonomies]
+  tag = "tags"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  noClasses = false
+
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]

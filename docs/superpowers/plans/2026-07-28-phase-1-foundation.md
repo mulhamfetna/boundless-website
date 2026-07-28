@@ -10,7 +10,8 @@
 
 ## Global Constraints
 
-- **Hugo version:** 0.154.5 extended. The extended flavour is required (Blowfish needs SCSS transpilation).
+- **Hugo version:** 0.164.0 extended, **pinned per-project** in `.hugoversion` and installed into `.tools/` by `make setup`. Never taken from `PATH`. The extended flavour is required (Blowfish needs SCSS transpilation).
+  - *Revised during execution.* The plan was originally written against the system Hugo 0.154.5. Blowfish v2.105.0 declares a supported range of 0.158.0–0.164.0, so 0.154.5 is below its minimum — it builds a trivial page but the combination is unsupported. Resolved by pinning Hugo 0.164.0 (top of the supported range, and the latest release) inside the repository rather than upgrading the system package. `tests/cases/00-toolchain.sh` asserts the compatibility warning is absent, so this cannot silently regress.
 - **Blowfish version:** pinned exactly, vendored into `_vendor/`. Never `hugo mod get -u` outside a deliberate theme-update task.
 - **Languages:** English `en` is `defaultContentLanguage`, served at `/` (`defaultContentLanguageInSubdir = false`). Arabic `ar` served at `/ar/`, direction RTL.
 - **Translation rule:** every non-draft page of kind `page`, `section`, or `home` that has a source file MUST have a counterpart in the other language. Violations fail the build.
@@ -20,6 +21,8 @@
 - **Tagline:** "Unleash Your True Academic Potential".
 - **Colour, type and spacing** are declared only in `assets/css/tokens.css`. No hard-coded colour values anywhere else.
 - **Every test run must be non-interactive** and exit non-zero on any failure.
+
+- **Test cases resolve Hugo through `tests/lib/env.sh`**, which exports `$HUGO`. Every case sources `env.sh` before `assert.sh` and invokes `"$HUGO"`, never bare `hugo`.
 
 **Verified before writing this plan (do not re-litigate):**
 - `errorf` in a partial causes `hugo` to exit 1 (`error building site: logged 1 error(s)`).

@@ -7,8 +7,13 @@ Bilingual (English / Arabic) static site built with Hugo and the Blowfish theme.
 
 ## Requirements
 
-- Hugo **extended** — exact version in `.hugoversion`
-- GNU Make
+- GNU Make, `curl`, `tar`
+
+Hugo is **not** taken from your PATH. `make setup` downloads the exact version named
+in `.hugoversion` into `.tools/` (gitignored), and every other target uses it. This is
+deliberate: Blowfish declares a supported Hugo range, and a distribution package drifts
+independently of this repository. Pinning the binary means you, a future volunteer, and
+Cloudflare all build with the identical version.
 
 The theme is vendored in `_vendor/`, so Go and network access are not needed to build.
 
@@ -16,6 +21,7 @@ The theme is vendored in `_vendor/`, so Go and network access are not needed to 
 
 | Command | What it does |
 |---|---|
+| `make setup` | Download the pinned Hugo binary (run once; other targets do it for you) |
 | `make dev` | Local dev server, drafts visible |
 | `make build` | Production build into `public/` |
 | `make test` | Full test suite |
