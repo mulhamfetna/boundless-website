@@ -824,7 +824,11 @@ git commit -m "feat: fail the build when a page is missing its translation"
 - Create: `assets/css/tokens.css`
 - Create: `assets/css/rtl.css`
 - Create: `assets/css/custom.css`
+- Create: `layouts/partials/boundless/styles.html`
+- Modify: `layouts/partials/extend-head-uncached.html`
 - Test: `tests/cases/40-styles.sh`
+
+> **Corrected during execution.** The plan had `custom.css` pull in the other files with CSS `@import`. That silently does not work: Blowfish loads `custom.css` through `resources.Concat` (`head.html:123`), which joins files byte-for-byte without resolving imports, so the import survived into the bundle as a dead reference — landing mid-bundle, where `@import` is invalid regardless. Tokens never reached the page and no error was raised. Replaced with `layouts/partials/boundless/styles.html`, which concatenates `fonts.css` + `tokens.css` + `rtl.css` explicitly through Hugo and emits one fingerprinted `<link>`. `custom.css` remains the theme's extension point for component overrides. `40-styles.sh` now asserts no `@import` survives into any built stylesheet — a guard verified to fail against a deliberately injected import.
 
 **Interfaces:**
 - Consumes: the working build from Task 4.
