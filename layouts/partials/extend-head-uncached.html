@@ -1,0 +1,13 @@
+{{- /*
+  Blowfish renders this partial inside <head> on every page.
+
+  IMPORTANT — use this file, not extend-head.html. The theme calls
+  extend-head.html via partialCached with .Site as context, so it runs once per
+  language and has no access to the page: .File, .Draft and .IsTranslated do not
+  exist there. This uncached hook receives the Page, which is what per-page
+  validation requires.
+    _vendor/github.com/nunocoracao/blowfish/v2/layouts/partials/head.html:220
+
+  Later tasks append below. Do not remove what is already here.
+*/ -}}
+{{- partial "boundless/validate-translation.html" . -}}

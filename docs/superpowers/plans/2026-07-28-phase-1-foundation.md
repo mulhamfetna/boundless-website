@@ -4,9 +4,9 @@
 
 **Goal:** Stand up a bilingual (English/Arabic) Hugo site on the Blowfish theme that builds reproducibly, enforces the both-languages-or-it-does-not-publish rule at build time, carries the design-token layer the visual identity will drop into, and is ready to connect to Cloudflare Pages.
 
-**Architecture:** Hugo static site with Blowfish imported as a Hugo Module and **vendored** into `_vendor/`, so builds need neither Go nor network access and an upstream release can never break a deploy. English is the default language served at `/`; Arabic is served at `/ar/` with RTL layout. A validation partial hooked into Blowfish's `extend-head.html` extension point runs on every rendered page and calls `errorf` when a page has no counterpart translation — Hugo then exits non-zero, so Cloudflare refuses to deploy. Tests are shell scripts that build the site (optionally against fixture content directories via the `HUGO_CONTENTDIR` environment override) and assert on exit codes and generated HTML.
+**Architecture:** Hugo static site with Blowfish imported as a Hugo Module and **vendored** into `_vendor/`, so builds need neither Go nor network access and an upstream release can never break a deploy. English is the default language served at `/`; Arabic is served at `/ar/` with RTL layout. A validation partial hooked into Blowfish's `extend-head-uncached.html` extension point runs on every rendered page and calls `errorf` when a page has no counterpart translation — Hugo then exits non-zero, so Cloudflare refuses to deploy. Tests are shell scripts that build the site (optionally against fixture content directories via the `HUGO_CONTENTDIR` environment override) and assert on exit codes and generated HTML.
 
-**Tech Stack:** Hugo 0.154.5 extended · Blowfish v2 (Hugo Module, vendored) · TOML config · Bash test harness · GNU Make · Cloudflare Pages
+**Tech Stack:** Hugo 0.164.0 extended (pinned in `.tools/`) · Blowfish v2.105.0 (Hugo Module, vendored) · TOML config · Bash test harness · GNU Make · Cloudflare Pages
 
 ## Global Constraints
 
@@ -615,15 +615,17 @@ git commit -m "feat: configure English and Arabic locales with RTL support"
 ### Task 4: The translation gate
 
 **Files:**
-- Create: `layouts/partials/extend-head.html`
+- Create: `layouts/partials/extend-head-uncached.html`
 - Create: `layouts/partials/boundless/validate-translation.html`
+
+> **Corrected during execution.** The plan originally specified `extend-head.html`. Reading the vendored theme showed Blowfish invokes that file as `partialCached "extend-head.html" .Site` (`layouts/partials/head.html:216`) — cached once per language, with `.Site` as context, so `.File`, `.Draft` and `.IsTranslated` are unavailable and per-page validation is impossible there. The theme also exposes `extend-head-uncached.html`, invoked as `partial "extend-head-uncached.html" .` with the Page context (`head.html:221`). That is the correct hook, and it is what was implemented. Tasks 4 and 6 both use it.
 - Create: `tests/fixtures/orphan/_index.en.md`, `tests/fixtures/orphan/_index.ar.md`, `tests/fixtures/orphan/lonely.en.md`
 - Create: `tests/fixtures/paired/_index.en.md`, `tests/fixtures/paired/_index.ar.md`, `tests/fixtures/paired/together.en.md`, `tests/fixtures/paired/together.ar.md`, `tests/fixtures/paired/wip.en.md`
 - Test: `tests/cases/30-translation-gate.sh`
 
 **Interfaces:**
 - Consumes: the working bilingual build from Task 3.
-- Produces: `layouts/partials/extend-head.html` — Blowfish's per-page extension point. Later tasks (font preloading, analytics) **append to this file**, they do not replace it.
+- Produces: `layouts/partials/extend-head-uncached.html` — Blowfish's per-page extension point. Later tasks (font preloading, analytics) **append to this file**, they do not replace it.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -785,7 +787,7 @@ Create `layouts/partials/boundless/validate-translation.html`:
 
 - [ ] **Step 5: Hook it into every page**
 
-Create `layouts/partials/extend-head.html`:
+Create `layouts/partials/extend-head-uncached.html`:
 
 ```go-html-template
 {{- /*
@@ -1017,11 +1019,11 @@ git commit -m "feat: add design tokens and RTL stylesheet"
 - Create: `static/fonts/ibm-plex-sans-arabic-latin-600-normal.woff2`
 - Create: `assets/css/fonts.css`
 - Modify: `assets/css/custom.css`
-- Modify: `layouts/partials/extend-head.html`
+- Modify: `layouts/partials/extend-head-uncached.html`
 - Test: `tests/cases/50-fonts.sh`
 
 **Interfaces:**
-- Consumes: `assets/css/custom.css` and `layouts/partials/extend-head.html` from Tasks 4 and 5.
+- Consumes: `assets/css/custom.css` and `layouts/partials/extend-head-uncached.html` from Tasks 4 and 5.
 - Produces: font families `IBM Plex Sans Arabic` and `IBM Plex Sans`, matching the `--bl-font-sans` / `--bl-font-arabic` tokens.
 
 - [ ] **Step 1: Write the failing test**
@@ -1055,12 +1057,12 @@ assert_file_contains "fonts use font-display swap" "assets/css/fonts.css" "font-
 
 # Global constraint: absolutely no third-party runtime requests.
 assert_file_not_contains "no Google Fonts in CSS" "assets/css/fonts.css" "fonts.googleapis.com"
-assert_file_not_contains "no Google Fonts in head" "layouts/partials/extend-head.html" "fonts.googleapis.com"
+assert_file_not_contains "no Google Fonts in head" "layouts/partials/extend-head-uncached.html" "fonts.googleapis.com"
 assert_file_not_contains "no CDN reference in CSS" "assets/css/fonts.css" "jsdelivr"
 
-assert_file_contains "Arabic font is preloaded" "layouts/partials/extend-head.html" "preload"
+assert_file_contains "Arabic font is preloaded" "layouts/partials/extend-head-uncached.html" "preload"
 assert_file_contains "translation gate is still wired up" \
-  "layouts/partials/extend-head.html" "validate-translation.html"
+  "layouts/partials/extend-head-uncached.html" "validate-translation.html"
 
 finish
 ```
@@ -1150,7 +1152,7 @@ Edit `assets/css/custom.css` — add `@import "fonts.css";` as the **first** imp
 @import "rtl.css";
 ```
 
-Replace `layouts/partials/extend-head.html` with the following. It keeps the translation gate and adds language-aware preloading — each locale preloads only the subset it actually renders:
+Replace `layouts/partials/extend-head-uncached.html` with the following. It keeps the translation gate and adds language-aware preloading — each locale preloads only the subset it actually renders:
 
 ```go-html-template
 {{- /*
@@ -1179,7 +1181,7 @@ Expected: PASS — all five case files, 0 failures.
 - [ ] **Step 7: Commit**
 
 ```bash
-git add static/fonts/ assets/css/fonts.css assets/css/custom.css layouts/partials/extend-head.html tests/cases/50-fonts.sh
+git add static/fonts/ assets/css/fonts.css assets/css/custom.css layouts/partials/extend-head-uncached.html tests/cases/50-fonts.sh
 git commit -m "feat: self-host IBM Plex Sans Arabic with per-language preloading"
 ```
 

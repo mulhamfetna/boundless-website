@@ -1,0 +1,23 @@
+{{- /*
+  Translation gate.
+
+  Design decision D2: every non-draft page must exist in both English and Arabic.
+  This partial enforces it at build time — errorf makes Hugo exit non-zero, so
+  Cloudflare Pages refuses to deploy an incomplete pair.
+
+  Scope:
+    - Only pages backed by a source file. Taxonomy, term and generated pages
+      have no author-written counterpart and are exempt.
+    - Only kinds home, page and section.
+    - Drafts are exempt, so work in progress never blocks anyone.
+
+  To publish a page, add its counterpart. To stop the error while writing,
+  set draft: true.
+*/ -}}
+{{- if and .File (not .Draft) (in (slice "home" "page" "section") .Kind) -}}
+  {{- if not .IsTranslated -}}
+    {{- $other := "ar" -}}
+    {{- if eq .Lang "ar" -}}{{- $other = "en" -}}{{- end -}}
+    {{- errorf "TRANSLATION GATE: %q [%s] has no %s counterpart. Create the %s translation, or set draft: true while it is unfinished. Source: %s" .Path .Lang $other $other .File.Path -}}
+  {{- end -}}
+{{- end -}}
