@@ -1,0 +1,9 @@
+[[main]]
+  name = "من نحن"
+  pageRef = "/about"
+  weight = 10
+
+[[footer]]
+  name = "من نحن"
+  pageRef = "/about"
+  weight = 10

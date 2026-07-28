@@ -1,0 +1,9 @@
+[[main]]
+  name = "About"
+  pageRef = "/about"
+  weight = 10
+
+[[footer]]
+  name = "About"
+  pageRef = "/about"
+  weight = 10
