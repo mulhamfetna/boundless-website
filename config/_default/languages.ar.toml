@@ -1,0 +1,16 @@
+languageCode = "ar"
+languageName = "العربية"
+languageDirection = "rtl"
+weight = 2
+title = "باوندلس للخدمات الأكاديمية"
+
+[params]
+  displayName = "ع"
+  isoCode = "ar"
+  # Blowfish reads site.Params.rtl in layouts/_default/baseof.html to set dir=.
+  rtl = true
+  dateFormat = "2 January 2006"
+  description = "أطلق إمكاناتك الأكاديمية الحقيقية. الإرشاد إلى المنح الدراسية، والتدريب على البحث العلمي، والمناهج الدولية."
+
+[params.author]
+  name = "باوندلس للخدمات الأكاديمية"
