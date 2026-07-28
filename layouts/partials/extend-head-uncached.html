@@ -12,3 +12,15 @@
 */ -}}
 {{- partial "boundless/validate-translation.html" . -}}
 {{- partial "boundless/styles.html" . -}}
+
+{{- /*
+  Font preloading. Each language preloads only the subset it actually renders, so
+  an English visitor never downloads the Arabic face and vice versa.
+*/ -}}
+{{- $subset := "latin" -}}
+{{- if eq .Lang "ar" -}}{{- $subset = "arabic" -}}{{- end -}}
+{{- with resources.Get (printf "fonts/ibm-plex-sans-arabic-%s-400-normal.woff2" $subset) -}}
+  <link rel="preload" href="{{ .RelPermalink }}" as="font" type="font/woff2" crossorigin>
+{{- else -}}
+  <link rel="preload" href="/fonts/ibm-plex-sans-arabic-{{ $subset }}-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+{{- end -}}
