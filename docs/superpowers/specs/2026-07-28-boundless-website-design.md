@@ -239,4 +239,3 @@ Not blocking, but needed before the phase they belong to:
 - Participant photo consent status for media published from the SRC2 archive — needed by Phase 4
 - Core team roster and who counts as core for person pages — needed by Phase 2
 - Newsletter sending tool — needed before the first send, not before launch
-- Repository is named `boundless-blog` but the deliverable is the full association website; rename worth considering before the remote is created
