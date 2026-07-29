@@ -1,0 +1,16 @@
+languageCode = "en"
+languageName = "English"
+languageDirection = "ltr"
+weight = 1
+title = "Boundless Academic Services"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  # Blowfish reads site.Params.rtl in layouts/_default/baseof.html to set dir=.
+  rtl = false
+  dateFormat = "2 January 2006"
+  description = "Unleash Your True Academic Potential. Scholarship mentorship, scientific research training, and global curricula."
+
+[params.author]
+  name = "Boundless Academic Services"

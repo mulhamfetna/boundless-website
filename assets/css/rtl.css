@@ -1,0 +1,37 @@
+/*
+  Right-to-left corrections.
+
+  Rule: use CSS logical properties everywhere so a single declaration serves both
+  directions. This file holds only the cases logical properties cannot express —
+  mirrored glyphs and directional punctuation.
+*/
+[dir="rtl"] {
+  font-family: var(--bl-font-arabic);
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .prose {
+  text-align: start;
+}
+
+/* Arabic numerals in a bilingual context read better as Western digits. */
+[dir="rtl"] time,
+[dir="rtl"] .bl-number {
+  font-feature-settings: "lnum" 1;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* Glyphs whose meaning is directional must mirror. */
+[dir="rtl"] .bl-icon-arrow {
+  transform: scaleX(-1);
+}
+
+/* Code and identifiers stay LTR even inside Arabic prose. */
+[dir="rtl"] code,
+[dir="rtl"] pre,
+[dir="rtl"] samp {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: embed;
+}

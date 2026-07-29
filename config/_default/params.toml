@@ -1,0 +1,34 @@
+colorScheme = "blowfish"
+defaultAppearance = "light"
+autoSwitchAppearance = true
+
+enableSearch = true
+enableCodeCopy = false
+
+mainSections = ["articles"]
+robots = "index, follow"
+
+[header]
+  layout = "basic"
+
+[footer]
+  showMenu = true
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "page"
+  showRecent = false
+
+[article]
+  showDate = true
+  showAuthor = true
+  showBreadcrumbs = true
+  showTaxonomies = true
+  showWordCount = false
+  showReadingTime = false
+  showTableOfContents = false
+  showPagination = false
+  showEdit = false

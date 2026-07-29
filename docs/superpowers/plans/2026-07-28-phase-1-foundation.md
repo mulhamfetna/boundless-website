@@ -4,13 +4,14 @@
 
 **Goal:** Stand up a bilingual (English/Arabic) Hugo site on the Blowfish theme that builds reproducibly, enforces the both-languages-or-it-does-not-publish rule at build time, carries the design-token layer the visual identity will drop into, and is ready to connect to Cloudflare Pages.
 
-**Architecture:** Hugo static site with Blowfish imported as a Hugo Module and **vendored** into `_vendor/`, so builds need neither Go nor network access and an upstream release can never break a deploy. English is the default language served at `/`; Arabic is served at `/ar/` with RTL layout. A validation partial hooked into Blowfish's `extend-head.html` extension point runs on every rendered page and calls `errorf` when a page has no counterpart translation — Hugo then exits non-zero, so Cloudflare refuses to deploy. Tests are shell scripts that build the site (optionally against fixture content directories via the `HUGO_CONTENTDIR` environment override) and assert on exit codes and generated HTML.
+**Architecture:** Hugo static site with Blowfish imported as a Hugo Module and **vendored** into `_vendor/`, so builds need neither Go nor network access and an upstream release can never break a deploy. English is the default language served at `/`; Arabic is served at `/ar/` with RTL layout. A validation partial hooked into Blowfish's `extend-head-uncached.html` extension point runs on every rendered page and calls `errorf` when a page has no counterpart translation — Hugo then exits non-zero, so Cloudflare refuses to deploy. Tests are shell scripts that build the site (optionally against fixture content directories via the `HUGO_CONTENTDIR` environment override) and assert on exit codes and generated HTML.
 
-**Tech Stack:** Hugo 0.154.5 extended · Blowfish v2 (Hugo Module, vendored) · TOML config · Bash test harness · GNU Make · Cloudflare Pages
+**Tech Stack:** Hugo 0.164.0 extended (pinned in `.tools/`) · Blowfish v2.105.0 (Hugo Module, vendored) · TOML config · Bash test harness · GNU Make · Cloudflare Pages
 
 ## Global Constraints
 
-- **Hugo version:** 0.154.5 extended. The extended flavour is required (Blowfish needs SCSS transpilation).
+- **Hugo version:** 0.164.0 extended, **pinned per-project** in `.hugoversion` and installed into `.tools/` by `make setup`. Never taken from `PATH`. The extended flavour is required (Blowfish needs SCSS transpilation).
+  - *Revised during execution.* The plan was originally written against the system Hugo 0.154.5. Blowfish v2.105.0 declares a supported range of 0.158.0–0.164.0, so 0.154.5 is below its minimum — it builds a trivial page but the combination is unsupported. Resolved by pinning Hugo 0.164.0 (top of the supported range, and the latest release) inside the repository rather than upgrading the system package. `tests/cases/00-toolchain.sh` asserts the compatibility warning is absent, so this cannot silently regress.
 - **Blowfish version:** pinned exactly, vendored into `_vendor/`. Never `hugo mod get -u` outside a deliberate theme-update task.
 - **Languages:** English `en` is `defaultContentLanguage`, served at `/` (`defaultContentLanguageInSubdir = false`). Arabic `ar` served at `/ar/`, direction RTL.
 - **Translation rule:** every non-draft page of kind `page`, `section`, or `home` that has a source file MUST have a counterpart in the other language. Violations fail the build.
@@ -20,6 +21,8 @@
 - **Tagline:** "Unleash Your True Academic Potential".
 - **Colour, type and spacing** are declared only in `assets/css/tokens.css`. No hard-coded colour values anywhere else.
 - **Every test run must be non-interactive** and exit non-zero on any failure.
+
+- **Test cases resolve Hugo through `tests/lib/env.sh`**, which exports `$HUGO`. Every case sources `env.sh` before `assert.sh` and invokes `"$HUGO"`, never bare `hugo`.
 
 **Verified before writing this plan (do not re-litigate):**
 - `errorf` in a partial causes `hugo` to exit 1 (`error building site: logged 1 error(s)`).
@@ -51,7 +54,7 @@
   and `finish` (exits with the number of failed assertions).
   Also produces `make test`, `make build`, `make dev`, `make clean`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/cases/00-toolchain.sh`:
 
@@ -80,12 +83,12 @@ assert_file_contains "gitignore excludes build output" ".gitignore" "public/"
 finish
 ```
 
-- [ ] **Step 2: Run it to make sure it fails**
+- [x] **Step 2: Run it to make sure it fails**
 
 Run: `bash tests/cases/00-toolchain.sh`
 Expected: FAIL — `tests/lib/assert.sh: No such file or directory`.
 
-- [ ] **Step 3: Write the assertion library**
+- [x] **Step 3: Write the assertion library**
 
 Create `tests/lib/assert.sh`:
 
@@ -165,7 +168,7 @@ finish() {
 }
 ```
 
-- [ ] **Step 4: Write the test runner**
+- [x] **Step 4: Write the test runner**
 
 Create `tests/run.sh`:
 
@@ -193,7 +196,7 @@ printf '\033[31m%d test case(s) failed.\033[0m\n' "$failed_cases"
 exit 1
 ```
 
-- [ ] **Step 5: Write the version pin, Makefile, README and gitignore**
+- [x] **Step 5: Write the version pin, Makefile, README and gitignore**
 
 Create `.hugoversion` containing exactly one line:
 
@@ -277,12 +280,12 @@ node_modules/
 tests/.tmp/
 ```
 
-- [ ] **Step 6: Run the test to verify it passes**
+- [x] **Step 6: Run the test to verify it passes**
 
 Run: `make test`
 Expected: PASS — `00-toolchain.sh` reports 4 assertions, 0 failures.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 chmod +x tests/run.sh tests/lib/assert.sh tests/cases/00-toolchain.sh
@@ -308,7 +311,7 @@ git commit -m "chore: add repo scaffolding, Makefile and shell test harness"
 - Consumes: `tests/lib/assert.sh` from Task 1.
 - Produces: a buildable site. Config lives in `config/_default/`; later tasks add `languages.*.toml` and `menus.*.toml` beside it. Blowfish is importable at module path `github.com/nunocoracao/blowfish/v2`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/cases/10-build.sh`:
 
@@ -331,12 +334,12 @@ assert_file_contains "site title renders" "$OUT/index.html" "Boundless Academic 
 finish
 ```
 
-- [ ] **Step 2: Run it to make sure it fails**
+- [x] **Step 2: Run it to make sure it fails**
 
 Run: `bash tests/cases/10-build.sh`
 Expected: FAIL — no `go.mod`, no config, build errors.
 
-- [ ] **Step 3: Initialise the Hugo module and fetch the theme**
+- [x] **Step 3: Initialise the Hugo module and fetch the theme**
 
 ```bash
 hugo mod init github.com/mulhamfetna/boundless-website
@@ -345,7 +348,7 @@ hugo mod get github.com/nunocoracao/blowfish/v2@v2.105.0
 
 If `v2.105.0` is not resolvable, run `hugo mod get github.com/nunocoracao/blowfish/v2` and record whatever exact version lands in `go.mod` — the requirement is that it is *pinned*, not that it is that specific number. Update the spec's §4 if the version differs.
 
-- [ ] **Step 4: Write the configuration**
+- [x] **Step 4: Write the configuration**
 
 Create `hugo.toml` (root — deliberately minimal; everything real lives in `config/_default/`):
 
@@ -434,7 +437,7 @@ robots = "index, follow"
   showEdit = false
 ```
 
-- [ ] **Step 5: Write the home page content**
+- [x] **Step 5: Write the home page content**
 
 Create `content/_index.en.md`:
 
@@ -453,7 +456,7 @@ English only for now. The Arabic counterpart arrives in Task 3, together with th
 language configuration — a `.ar.md` file without a configured `ar` language would be
 handled unpredictably by Hugo, so the two land in the same task.
 
-- [ ] **Step 6: Vendor the theme**
+- [x] **Step 6: Vendor the theme**
 
 ```bash
 hugo mod vendor
@@ -461,12 +464,12 @@ hugo mod vendor
 
 This writes `_vendor/`, which **is committed**. From here the build needs neither Go nor network access, so an upstream release cannot break a Cloudflare deploy.
 
-- [ ] **Step 7: Run the tests to verify they pass**
+- [x] **Step 7: Run the tests to verify they pass**
 
 Run: `make test`
 Expected: PASS — both `00-toolchain.sh` and `10-build.sh` report 0 failures.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add hugo.toml config/ go.mod go.sum _vendor/ content/ tests/cases/10-build.sh
@@ -487,7 +490,7 @@ git commit -m "feat: initialise Hugo site with Blowfish pinned and vendored"
 - Consumes: the config directory from Task 2.
 - Produces: two configured languages. Later tasks rely on English output at `<out>/index.html` and Arabic at `<out>/ar/index.html`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/cases/20-i18n.sh`:
 
@@ -520,12 +523,12 @@ assert_file_contains "Arabic site title is set" "$OUT/ar/index.html" "باوند
 finish
 ```
 
-- [ ] **Step 2: Run it to make sure it fails**
+- [x] **Step 2: Run it to make sure it fails**
 
 Run: `bash tests/cases/20-i18n.sh`
 Expected: FAIL — no `/ar/` output exists yet.
 
-- [ ] **Step 3: Discover the theme's RTL configuration key**
+- [x] **Step 3: Discover the theme's RTL configuration key**
 
 Blowfish's exact key for right-to-left is a theme detail, so read it from the vendored source rather than guessing:
 
@@ -536,7 +539,7 @@ grep -rn 'rtl' _vendor/github.com/nunocoracao/blowfish/v2/config/_default/langua
 
 Whatever key the theme reads is the key to set in Step 4. The test in Step 1 is the arbiter: it asserts `dir="rtl"` reaches the Arabic HTML.
 
-- [ ] **Step 4: Write the language configuration**
+- [x] **Step 4: Write the language configuration**
 
 Create `config/_default/languages.en.toml`:
 
@@ -580,7 +583,7 @@ title = "باوندلس للخدمات الأكاديمية"
 
 If Step 3 showed the theme reads a different key, set that key too — keep both rather than removing one, since `languageDirection` is also what Hugo itself exposes.
 
-- [ ] **Step 5: Write the Arabic home page**
+- [x] **Step 5: Write the Arabic home page**
 
 Create `content/_index.ar.md`:
 
@@ -595,12 +598,12 @@ translationKey: "home"
 والبحث العلمي، والمناهج الدولية.
 ```
 
-- [ ] **Step 6: Run the tests to verify they pass**
+- [x] **Step 6: Run the tests to verify they pass**
 
 Run: `make test`
 Expected: PASS. If `dir="rtl"` is missing, revisit Step 3 — do not weaken the assertion.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add config/_default/languages.en.toml config/_default/languages.ar.toml content/_index.ar.md tests/cases/20-i18n.sh
@@ -612,17 +615,19 @@ git commit -m "feat: configure English and Arabic locales with RTL support"
 ### Task 4: The translation gate
 
 **Files:**
-- Create: `layouts/partials/extend-head.html`
+- Create: `layouts/partials/extend-head-uncached.html`
 - Create: `layouts/partials/boundless/validate-translation.html`
+
+> **Corrected during execution.** The plan originally specified `extend-head.html`. Reading the vendored theme showed Blowfish invokes that file as `partialCached "extend-head.html" .Site` (`layouts/partials/head.html:216`) — cached once per language, with `.Site` as context, so `.File`, `.Draft` and `.IsTranslated` are unavailable and per-page validation is impossible there. The theme also exposes `extend-head-uncached.html`, invoked as `partial "extend-head-uncached.html" .` with the Page context (`head.html:221`). That is the correct hook, and it is what was implemented. Tasks 4 and 6 both use it.
 - Create: `tests/fixtures/orphan/_index.en.md`, `tests/fixtures/orphan/_index.ar.md`, `tests/fixtures/orphan/lonely.en.md`
 - Create: `tests/fixtures/paired/_index.en.md`, `tests/fixtures/paired/_index.ar.md`, `tests/fixtures/paired/together.en.md`, `tests/fixtures/paired/together.ar.md`, `tests/fixtures/paired/wip.en.md`
 - Test: `tests/cases/30-translation-gate.sh`
 
 **Interfaces:**
 - Consumes: the working bilingual build from Task 3.
-- Produces: `layouts/partials/extend-head.html` — Blowfish's per-page extension point. Later tasks (font preloading, analytics) **append to this file**, they do not replace it.
+- Produces: `layouts/partials/extend-head-uncached.html` — Blowfish's per-page extension point. Later tasks (font preloading, analytics) **append to this file**, they do not replace it.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/cases/30-translation-gate.sh`:
 
@@ -662,12 +667,12 @@ assert_file_exists "paired build produced output" "tests/.tmp/gate-paired/index.
 finish
 ```
 
-- [ ] **Step 2: Run it to make sure it fails**
+- [x] **Step 2: Run it to make sure it fails**
 
 Run: `bash tests/cases/30-translation-gate.sh`
 Expected: FAIL — the orphan build currently exits 0, because no gate exists.
 
-- [ ] **Step 3: Write the fixtures**
+- [x] **Step 3: Write the fixtures**
 
 `tests/fixtures/orphan/_index.en.md`:
 
@@ -750,7 +755,7 @@ draft: true
 Draft with no counterpart. Must NOT fail the build.
 ```
 
-- [ ] **Step 4: Write the validation partial**
+- [x] **Step 4: Write the validation partial**
 
 Create `layouts/partials/boundless/validate-translation.html`:
 
@@ -780,9 +785,9 @@ Create `layouts/partials/boundless/validate-translation.html`:
 {{- end -}}
 ```
 
-- [ ] **Step 5: Hook it into every page**
+- [x] **Step 5: Hook it into every page**
 
-Create `layouts/partials/extend-head.html`:
+Create `layouts/partials/extend-head-uncached.html`:
 
 ```go-html-template
 {{- /*
@@ -794,17 +799,17 @@ Create `layouts/partials/extend-head.html`:
 {{- partial "boundless/validate-translation.html" . -}}
 ```
 
-- [ ] **Step 6: Run the tests to verify they pass**
+- [x] **Step 6: Run the tests to verify they pass**
 
 Run: `make test`
 Expected: PASS — the orphan fixture exits 1 with a message naming `lonely`, and the paired fixture (draft included) exits 0.
 
-- [ ] **Step 7: Verify the gate against the real site**
+- [x] **Step 7: Verify the gate against the real site**
 
 Run: `make build`
 Expected: exit 0. If it fails, a real page is missing its counterpart — add it rather than loosening the gate.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add layouts/ tests/fixtures/ tests/cases/30-translation-gate.sh
@@ -819,7 +824,11 @@ git commit -m "feat: fail the build when a page is missing its translation"
 - Create: `assets/css/tokens.css`
 - Create: `assets/css/rtl.css`
 - Create: `assets/css/custom.css`
+- Create: `layouts/partials/boundless/styles.html`
+- Modify: `layouts/partials/extend-head-uncached.html`
 - Test: `tests/cases/40-styles.sh`
+
+> **Corrected during execution.** The plan had `custom.css` pull in the other files with CSS `@import`. That silently does not work: Blowfish loads `custom.css` through `resources.Concat` (`head.html:123`), which joins files byte-for-byte without resolving imports, so the import survived into the bundle as a dead reference — landing mid-bundle, where `@import` is invalid regardless. Tokens never reached the page and no error was raised. Replaced with `layouts/partials/boundless/styles.html`, which concatenates `fonts.css` + `tokens.css` + `rtl.css` explicitly through Hugo and emits one fingerprinted `<link>`. `custom.css` remains the theme's extension point for component overrides. `40-styles.sh` now asserts no `@import` survives into any built stylesheet — a guard verified to fail against a deliberately injected import.
 
 **Interfaces:**
 - Consumes: the working build from Task 4.
@@ -830,7 +839,7 @@ git commit -m "feat: fail the build when a page is missing its translation"
   `--bl-space-1` … `--bl-space-6`, `--bl-radius`, `--bl-measure`.
   Applying the real visual identity later means editing **only** `tokens.css`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/cases/40-styles.sh`:
 
@@ -867,12 +876,12 @@ assert_equals "tokens reach the built stylesheet" "1" "$css_found"
 finish
 ```
 
-- [ ] **Step 2: Run it to make sure it fails**
+- [x] **Step 2: Run it to make sure it fails**
 
 Run: `bash tests/cases/40-styles.sh`
 Expected: FAIL — none of the stylesheets exist.
 
-- [ ] **Step 3: Write the design tokens**
+- [x] **Step 3: Write the design tokens**
 
 Create `assets/css/tokens.css`:
 
@@ -923,7 +932,7 @@ Create `assets/css/tokens.css`:
 }
 ```
 
-- [ ] **Step 4: Write the RTL stylesheet**
+- [x] **Step 4: Write the RTL stylesheet**
 
 Create `assets/css/rtl.css`:
 
@@ -967,7 +976,7 @@ Create `assets/css/rtl.css`:
 }
 ```
 
-- [ ] **Step 5: Write the entry stylesheet**
+- [x] **Step 5: Write the entry stylesheet**
 
 Create `assets/css/custom.css`:
 
@@ -990,13 +999,13 @@ body {
 }
 ```
 
-- [ ] **Step 6: Run the tests to verify they pass**
+- [x] **Step 6: Run the tests to verify they pass**
 
 Run: `make test`
 Expected: PASS. If "tokens reach the built stylesheet" fails, Blowfish is not picking `custom.css` up — check the vendored theme for the expected filename with:
 `grep -rn "custom.css" _vendor/github.com/nunocoracao/blowfish/v2/layouts/`
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add assets/ tests/cases/40-styles.sh
@@ -1014,14 +1023,14 @@ git commit -m "feat: add design tokens and RTL stylesheet"
 - Create: `static/fonts/ibm-plex-sans-arabic-latin-600-normal.woff2`
 - Create: `assets/css/fonts.css`
 - Modify: `assets/css/custom.css`
-- Modify: `layouts/partials/extend-head.html`
+- Modify: `layouts/partials/extend-head-uncached.html`
 - Test: `tests/cases/50-fonts.sh`
 
 **Interfaces:**
-- Consumes: `assets/css/custom.css` and `layouts/partials/extend-head.html` from Tasks 4 and 5.
+- Consumes: `assets/css/custom.css` and `layouts/partials/extend-head-uncached.html` from Tasks 4 and 5.
 - Produces: font families `IBM Plex Sans Arabic` and `IBM Plex Sans`, matching the `--bl-font-sans` / `--bl-font-arabic` tokens.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/cases/50-fonts.sh`:
 
@@ -1052,22 +1061,22 @@ assert_file_contains "fonts use font-display swap" "assets/css/fonts.css" "font-
 
 # Global constraint: absolutely no third-party runtime requests.
 assert_file_not_contains "no Google Fonts in CSS" "assets/css/fonts.css" "fonts.googleapis.com"
-assert_file_not_contains "no Google Fonts in head" "layouts/partials/extend-head.html" "fonts.googleapis.com"
+assert_file_not_contains "no Google Fonts in head" "layouts/partials/extend-head-uncached.html" "fonts.googleapis.com"
 assert_file_not_contains "no CDN reference in CSS" "assets/css/fonts.css" "jsdelivr"
 
-assert_file_contains "Arabic font is preloaded" "layouts/partials/extend-head.html" "preload"
+assert_file_contains "Arabic font is preloaded" "layouts/partials/extend-head-uncached.html" "preload"
 assert_file_contains "translation gate is still wired up" \
-  "layouts/partials/extend-head.html" "validate-translation.html"
+  "layouts/partials/extend-head-uncached.html" "validate-translation.html"
 
 finish
 ```
 
-- [ ] **Step 2: Run it to make sure it fails**
+- [x] **Step 2: Run it to make sure it fails**
 
 Run: `bash tests/cases/50-fonts.sh`
 Expected: FAIL — no fonts, no `fonts.css`.
 
-- [ ] **Step 3: Download the fonts**
+- [x] **Step 3: Download the fonts**
 
 These four URLs were verified to return HTTP 200 with real payloads:
 
@@ -1085,7 +1094,7 @@ Each file should be roughly 19–46 KB. The files are committed to the repositor
 
 IBM Plex is licensed under the SIL Open Font License, which permits redistribution.
 
-- [ ] **Step 4: Write the font declarations**
+- [x] **Step 4: Write the font declarations**
 
 Create `assets/css/fonts.css`:
 
@@ -1137,7 +1146,7 @@ Create `assets/css/fonts.css`:
 }
 ```
 
-- [ ] **Step 5: Import the fonts and preload the critical ones**
+- [x] **Step 5: Import the fonts and preload the critical ones**
 
 Edit `assets/css/custom.css` — add `@import "fonts.css";` as the **first** import, above `tokens.css`:
 
@@ -1147,7 +1156,7 @@ Edit `assets/css/custom.css` — add `@import "fonts.css";` as the **first** imp
 @import "rtl.css";
 ```
 
-Replace `layouts/partials/extend-head.html` with the following. It keeps the translation gate and adds language-aware preloading — each locale preloads only the subset it actually renders:
+Replace `layouts/partials/extend-head-uncached.html` with the following. It keeps the translation gate and adds language-aware preloading — each locale preloads only the subset it actually renders:
 
 ```go-html-template
 {{- /*
@@ -1168,15 +1177,15 @@ Replace `layouts/partials/extend-head.html` with the following. It keeps the tra
 {{- end -}}
 ```
 
-- [ ] **Step 6: Run the tests to verify they pass**
+- [x] **Step 6: Run the tests to verify they pass**
 
 Run: `make test`
 Expected: PASS — all five case files, 0 failures.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
-git add static/fonts/ assets/css/fonts.css assets/css/custom.css layouts/partials/extend-head.html tests/cases/50-fonts.sh
+git add static/fonts/ assets/css/fonts.css assets/css/custom.css layouts/partials/extend-head-uncached.html tests/cases/50-fonts.sh
 git commit -m "feat: self-host IBM Plex Sans Arabic with per-language preloading"
 ```
 
@@ -1197,7 +1206,7 @@ git commit -m "feat: self-host IBM Plex Sans Arabic with per-language preloading
 - Consumes: everything from Tasks 1–6.
 - Produces: a navigable bilingual site and a deployment runbook. Phase 2 adds `programs`, `people` and `partners` sections to these menus.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `tests/cases/60-navigation.sh`:
 
@@ -1231,12 +1240,12 @@ assert_file_contains "runbook pins the Hugo version" \
 finish
 ```
 
-- [ ] **Step 2: Run it to make sure it fails**
+- [x] **Step 2: Run it to make sure it fails**
 
 Run: `bash tests/cases/60-navigation.sh`
 Expected: FAIL — no about pages, no menus, no runbook.
 
-- [ ] **Step 3: Write the menus**
+- [x] **Step 3: Write the menus**
 
 Create `config/_default/menus.en.toml`:
 
@@ -1266,7 +1275,7 @@ Create `config/_default/menus.ar.toml`:
   weight = 10
 ```
 
-- [ ] **Step 4: Write the UI string tables**
+- [x] **Step 4: Write the UI string tables**
 
 Create `i18n/en.toml`:
 
@@ -1320,7 +1329,7 @@ other = "مترجم"
 
 The role strings are seeded here because Phase 3 renders credits from them; adding them now keeps the two locale files symmetrical from the start.
 
-- [ ] **Step 5: Write the About page in both languages**
+- [x] **Step 5: Write the About page in both languages**
 
 Create `content/about.en.md`:
 
@@ -1380,7 +1389,7 @@ translationKey: "about"
 ربحية والقطاع الخاص.
 ```
 
-- [ ] **Step 6: Write the deployment runbook**
+- [x] **Step 6: Write the deployment runbook**
 
 Create `docs/deployment/cloudflare-pages.md`:
 
@@ -1439,7 +1448,7 @@ purchased domain at it are account-level actions performed by Mulham Fetna. Anal
 (GA4) and the consent banner land in Phase 4.
 ```
 
-- [ ] **Step 7: Extend the gate fixtures so the new menu references resolve**
+- [x] **Step 7: Extend the gate fixtures so the new menu references resolve**
 
 The menus added in Step 3 use `pageRef = "/about"`. The Task 4 gate tests build against
 fixture content directories, where no `about` page exists, so the reference would
@@ -1492,21 +1501,21 @@ translationKey: "about"
 The orphan fixture still fails the build, because `lonely.en.md` remains unpaired —
 which is the whole point of that fixture.
 
-- [ ] **Step 8: Run the tests to verify they pass**
+- [x] **Step 8: Run the tests to verify they pass**
 
 Run: `make test`
 Expected: PASS — six case files, 0 failures. Pay particular attention to
 `30-translation-gate.sh`: if the paired fixture now fails, the menu reference is still
 dangling and needs the fixture page it points at.
 
-- [ ] **Step 9: Review the site by eye, in both directions**
+- [x] **Step 9: Review the site by eye, in both directions**
 
 Run: `make dev`
 Open `http://localhost:1313/` and `http://localhost:1313/ar/`.
 
 Confirm: Arabic text flows right-to-left, navigation mirrors, the language switcher moves between the pair, and no network request goes to a third-party domain (check the browser's network tab — every request should be same-origin).
 
-- [ ] **Step 10: Commit**
+- [x] **Step 10: Commit**
 
 ```bash
 git add config/_default/menus.en.toml config/_default/menus.ar.toml i18n/ content/about.en.md content/about.ar.md docs/deployment/ tests/fixtures/ tests/cases/60-navigation.sh
@@ -1517,15 +1526,15 @@ git commit -m "feat: add bilingual navigation, About page and Cloudflare runbook
 
 ## Phase 1 Definition of Done
 
-- [ ] `make test` passes — six case files, zero failures
-- [ ] `make build` exits 0 and produces `public/`
-- [ ] English at `/`, Arabic at `/ar/` with `dir="rtl"` and reciprocal `hreflang`
-- [ ] A page missing its counterpart fails the build with a message naming the file
-- [ ] Drafts are exempt from the gate
-- [ ] Zero third-party runtime requests
-- [ ] Colour, type and spacing live only in `assets/css/tokens.css`
-- [ ] Blowfish pinned and vendored; builds need neither Go nor network
-- [ ] Deployment runbook written and version-consistent with `.hugoversion`
+- [x] `make test` passes — six case files, zero failures
+- [x] `make build` exits 0 and produces `public/`
+- [x] English at `/`, Arabic at `/ar/` with `dir="rtl"` and reciprocal `hreflang`
+- [x] A page missing its counterpart fails the build with a message naming the file
+- [x] Drafts are exempt from the gate
+- [x] Zero third-party runtime requests
+- [x] Colour, type and spacing live only in `assets/css/tokens.css`
+- [x] Blowfish pinned and vendored; builds need neither Go nor network
+- [x] Deployment runbook written and version-consistent with `.hugoversion`
 
 ## Explicitly deferred to later phases
 

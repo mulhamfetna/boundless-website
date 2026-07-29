@@ -1,0 +1,3 @@
+# Root config is intentionally empty.
+# Real configuration lives in config/_default/ so that per-environment
+# overrides can be layered in config/production/ later.
