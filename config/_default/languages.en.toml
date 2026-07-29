@@ -1,6 +1,9 @@
-languageCode = "en"
-languageName = "English"
-languageDirection = "ltr"
+# locale/label/direction replaced languageCode/languageName/languageDirection,
+# which Hugo deprecated in 0.158.0. tests/cases/00-toolchain.sh fails the build on
+# any deprecation warning, so this stays current.
+locale = "en"
+label = "English"
+direction = "ltr"
 weight = 1
 title = "Boundless Academic Services"
 
