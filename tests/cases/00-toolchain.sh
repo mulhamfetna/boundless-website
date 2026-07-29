@@ -21,8 +21,17 @@ case "$hugo_version" in
 esac
 
 # The theme declares a supported Hugo range; running outside it is unsupported.
+# NOTE: deliberately no --quiet. Hugo suppresses WARN under --quiet, which made an
+# earlier version of this assertion vacuous — it passed for any Hugo version.
+build_log="$("$HUGO" --destination tests/.tmp/toolchain 2>&1)"
+
 assert_equals "hugo is inside the theme's supported range" "" \
-  "$("$HUGO" --quiet --destination tests/.tmp/toolchain 2>&1 | grep -F 'not compatible with this Hugo version')"
+  "$(printf '%s' "$build_log" | grep -F 'not compatible with this Hugo version')"
+
+# Deprecated config keys become hard errors in a later Hugo. Catch them now, while
+# they are still warnings, rather than on the release that removes them.
+assert_equals "config uses no deprecated keys" "0" \
+  "$(printf '%s' "$build_log" | grep -c 'deprecated')"
 
 assert_file_exists "Makefile exists" "Makefile"
 assert_file_contains "gitignore excludes build output" ".gitignore" "public/"
