@@ -7,10 +7,6 @@ enableRobotsTXT = true
 enableGitInfo = false
 summaryLength = 30
 
-# Build must be loud about problems rather than silently shipping them.
-[build]
-  writeStats = true
-
 [taxonomies]
   tag = "tags"
 
