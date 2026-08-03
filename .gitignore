@@ -6,3 +6,9 @@ node_modules/
 tests/.tmp/
 .tools/
 hugo_stats.json
+
+# Source archive of internal project documents. Contains personal data —
+# CVs, registration responses, contact details of applicants and volunteers.
+# NEVER commit. Content destined for the site is transcribed into content/
+# deliberately, with consent, not copied wholesale from here.
+knowledge_base/
