@@ -14,20 +14,20 @@ hero:
   corner: "br"
 stats:
   items:
-    - { value: "26", label: "researchers on one published paper" }
-    - { value: "Q1", label: "published in Hybrid Advances" }
-    - { value: "25+", label: "specialised workshops and lectures" }
-    - { value: "50", label: "youth researchers in the second camp" }
+    - { value: "90", label: "youth researchers across two camps" }
+    - { value: "80", label: "hours of training" }
+    - { value: "25", label: "workshops and training sessions" }
+    - { value: "Q1", label: "paper published in Hybrid Advances" }
 projects:
   title: "Our projects"
-  lead: "Two applied research camps and a local partnership in Global Entrepreneurship Week."
+  lead: "Two research camps, and an upcoming local partnership in Global Entrepreneurship Week."
 band:
   label: "How the camp works"
-  title: "Three months, from workshop to paper"
+  title: "From workshop to published paper"
   bullets:
-    - "One month of intensive training workshops"
-    - "Research teams supervised by a specialist PhD"
-    - "Drafts ready to submit for publication"
+    - "40 hours of training with specialist researchers and trainers"
+    - "A three-month research fellowship with academic supervision"
+    - "Papers ready to submit for publication"
   button: { label: "About the second camp", url: "/projects/src2/", style: "secondary" }
   image: "images/src2-session-hammal.jpg"
   imageAlt: "Dr. Abdulrazzak Hammal leading a research camp session"

@@ -8,12 +8,19 @@
     {{- with $p.facts }}<ul class="facts">{{ range . }}<li><span>{{ .label }}</span>{{ .value }}</li>{{ end }}</ul>{{ end }}
     {{- with $p.register }}<div class="pills"><a class="pill sun" href="{{ .url }}" rel="noopener">{{ .label }}</a></div>{{ end }}
   </div>
-  {{ partial "framed.html" (dict "img" $p.image "alt" $p.imageAlt "corner" ($p.corner | default "bl") "code" $p.code "fill" ($p.fill | default "sky") "eager" true "pos" $p.imagePos "ar" $p.imageRatio) }}
+  {{ partial "framed.html" (dict "img" $p.image "alt" $p.imageAlt "corner" ($p.corner | default (cond (isset $p "image") "bl" "tr")) "code" $p.code "fill" ($p.fill | default "sky") "eager" true "pos" $p.imagePos "ar" $p.imageRatio) }}
 </div></section>
 
 {{- with $p.stats }}
 <section class="band-ink"><div class="wrap">
   <div class="stats">{{ range . }}<div class="stat"><b>{{ .value }}</b><span>{{ .label }}</span></div>{{ end }}</div>
+</div></section>
+{{- end }}
+
+{{- with $p.sessions }}
+<section><div class="wrap">
+  <div class="sec-head"><h2>{{ $p.sessionsTitle | default (i18n "sessions") }}</h2>{{ with $p.sessionsLead }}<p>{{ . }}</p>{{ end }}</div>
+  <ul class="sessions">{{ range . }}<li><b class="n">{{ .count }}</b><span class="t">{{ .title }}</span><span class="by">{{ .by }}</span></li>{{ end }}</ul>
 </div></section>
 {{- end }}
 

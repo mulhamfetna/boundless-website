@@ -1,5 +1,5 @@
 ---
 translationKey: "projects"
 title: "Our projects"
-lead: "Two applied research camps and a local partnership in Global Entrepreneurship Week."
+lead: "Two research camps, and an upcoming local partnership in Global Entrepreneurship Week."
 ---
