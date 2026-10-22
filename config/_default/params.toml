@@ -1,34 +1,14 @@
-colorScheme = "blowfish"
-defaultAppearance = "light"
-autoSwitchAppearance = true
+# Site-wide parameters read by the Boundless theme (themes/boundless).
+tagline = "Unleash Your TRUE Academic Potential"
+city = "Aleppo"
+ogImage = "images/og.png"
+email = "[EMAIL]"
+sameAs = ["https://instagram.com/boundless.academics"]
 
-enableSearch = true
-enableCodeCopy = false
+[[social]]
+  name = "@boundless.academics"
+  url = "https://instagram.com/boundless.academics"
 
-mainSections = ["articles"]
-robots = "index, follow"
-
-[header]
-  layout = "basic"
-
-[footer]
-  showMenu = true
-  showCopyright = true
-  showThemeAttribution = true
-  showAppearanceSwitcher = true
-  showScrollToTop = true
-
-[homepage]
-  layout = "page"
-  showRecent = false
-
-[article]
-  showDate = true
-  showAuthor = true
-  showBreadcrumbs = true
-  showTaxonomies = true
-  showWordCount = false
-  showReadingTime = false
-  showTableOfContents = false
-  showPagination = false
-  showEdit = false
+[[social]]
+  name = "Facebook"
+  url = "[FACEBOOK URL]"

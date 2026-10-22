@@ -1,0 +1,14 @@
+/*
+  Design tokens: the ONLY place colour, type, spacing and radius are declared.
+  Values come from the Boundless visual identity v1.0 design system.
+  A site can override any token by adding its own assets/css/tokens.css.
+*/
+:root{
+  --bl-color-teal:#146C94;--bl-color-sky:#19A7CE;--bl-color-ink:#0A2F3D;--bl-color-ink-raised:#123D4E;--bl-color-sun:#FFD23F;--bl-color-on-sun:#3A2A00;--bl-color-mist:#AFD3E2;--bl-color-mist-soft:#E3F0F5;--bl-color-paper:#F5F8F9;--bl-color-white:#FFFFFF;
+  --bl-color-primary:var(--bl-color-teal);--bl-on-dark-secondary:#CFEFFA;--bl-on-dark-muted:#A9CCD8;--bl-on-dark-tag:rgba(255,255,255,.12);--bl-band-dark:var(--bl-color-ink);
+  --bl-surface:var(--bl-color-paper);--bl-surface-raised:var(--bl-color-white);--bl-text:var(--bl-color-ink);--bl-text-secondary:#2D4E5B;--bl-text-muted:#52747F;--bl-text-accent:var(--bl-color-teal);--bl-line:#D9E5EA;--bl-focus:var(--bl-color-teal);--bl-tag-bg:var(--bl-color-mist-soft);
+  --bl-font-sans:"Thmanyah Sans",system-ui,sans-serif;--bl-font-arabic:"Thmanyah Sans",system-ui,sans-serif;--bl-font-display:"Thmanyah Serif Display","Thmanyah Sans",serif;
+  --bl-wide:1296px;--bl-pad:48px;--bl-radius-tag:999px;--bl-radius-card:32px;--bl-radius-photo:64px;--bl-radius-photo-small:48px;--bl-radius-frame:84px;--bl-radius-icon:18px;--bl-frame-stroke:20px;
+  --bl-ease:cubic-bezier(.2,.8,.2,1);color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{--bl-surface:var(--bl-color-ink);--bl-surface-raised:var(--bl-color-ink-raised);--bl-text:var(--bl-color-white);--bl-text-secondary:#CFEFFA;--bl-text-muted:#A9CCD8;--bl-text-accent:var(--bl-color-sky);--bl-line:#1F4D5F;--bl-focus:var(--bl-color-sun);--bl-tag-bg:var(--bl-color-ink-raised);--bl-band-dark:#062330;color-scheme:dark}}

@@ -1,7 +1,10 @@
-baseURL = "https://boundless.example/"
+baseURL = "https://boundlessacademic.com/"
 title = "Boundless Academic Services"
+theme = "boundless"
 
-defaultContentLanguage = "en"
+# Arabic is the primary language, served at the site root; English lives under /en/.
+# Superseded spec decision D1 on 2026-10-23 (see the decision log in the design spec).
+defaultContentLanguage = "ar"
 defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
 enableGitInfo = false

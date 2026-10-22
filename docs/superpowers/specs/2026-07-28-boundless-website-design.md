@@ -239,3 +239,25 @@ Not blocking, but needed before the phase they belong to:
 - Participant photo consent status for media published from the SRC2 archive — needed by Phase 4
 - Core team roster and who counts as core for person pages — needed by Phase 2
 - Newsletter sending tool — needed before the first send, not before launch
+
+## 13. Decision log
+
+Changes to the decisions in §3, newest first. The original rows stay above as the record of what was decided at the time.
+
+### 2026-10-23 — Visual identity applied, custom theme, Arabic primary
+
+Decided by Mulham Fetna.
+
+| # | Was | Now |
+|---|---|---|
+| D1 | English primary at `/`, Arabic at `/ar/` | **Arabic primary at `/`, English at `/en/`.** `/ar/` redirects to `/`. `x-default` points to the Arabic page. |
+| D17 | Mature theme extended with overrides | **Custom theme in the repository** (`themes/boundless/`), built on the Boundless visual identity v1.0. |
+| D18 | Blowfish, pinned as a Hugo Module | **Blowfish removed** with `go.mod`, `_vendor/` and the module import. Build needs no network. |
+| §8 font | IBM Plex Sans Arabic | **Thmanyah Sans and Thmanyah Serif Display**, self-hosted, per the identity. |
+| §12 | Visual identity open (G9) | **Closed.** Identity v1.0 approved October 2026; tokens in `themes/boundless/assets/css/tokens.css`. |
+
+Kept unchanged: D2 translation gate (now wired through `layouts/partials/hooks/head-start.html`), the pinned Hugo binary, the test suite (updated to the new paths and language roots), Cloudflare Pages hosting.
+
+**Content published ahead of the gates in the knowledge-base analysis.** The first three project pages (SRC1, SRC2, GEW) go live with trainer names, session photos and partner names, treating Boundless's own public Instagram and Facebook posts of the same material as the basis for publication. This is the owner's decision and runs ahead of gaps G1 (attribution clause), G4 (donor approval of names and marks), G5 (participant image consent) and G3 (SRC1 record). Those gaps remain open and should still be closed; if any contributor, participant or partner objects, the page is edited or set to `draft: true`.
+
+**Not yet built from §5:** the program/edition content model, people, partners, articles, achievements and archive. The three project pages use a simpler `projects` section and move into the full model in Phase 2.

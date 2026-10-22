@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale | default site.Language.Lang }}" dir="{{ site.Language.Direction | default "ltr" }}">
+<head>
+{{ partial "hooks/head-start.html" . }}
+{{ partial "head.html" . }}
+</head>
+<body>
+<a class="skip" href="#main">{{ i18n "skip" }}</a>
+{{ partial "header.html" . }}
+<main id="main">
+{{ block "main" . }}{{ end }}
+</main>
+{{ partial "footer.html" . }}
+<script>
+(function(){var h=document.querySelector('.site-head'),b=document.querySelector('.menu-toggle');if(b){b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o)})}})();
+</script>
+</body>
+</html>

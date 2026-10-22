@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- $title := cond .IsHome (site.Params.homeTitle | default site.Title) (printf "%s · %s" .Title site.Title) }}
+<title>{{ $title }}</title>
+{{- $desc := .Description | default site.Params.description }}
+<meta name="description" content="{{ $desc }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="theme-color" content="#F5F8F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A2F3D" media="(prefers-color-scheme: dark)">
+{{- $img := site.Params.ogImage }}{{ with .Params.image }}{{ $img = . }}{{ end }}
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:locale" content="{{ cond (eq site.Language.Lang "ar") "ar_SY" "en_US" }}">
+{{- with $img }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+<meta name="twitter:card" content="summary_large_image">
+{{- range .AllTranslations }}<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">{{ if eq .Language.Lang hugo.Sites.Default.Language.Lang }}<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">{{ end }}{{ end }}
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "favicon-32.png" | relURL }}" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="{{ "favicon-180.png" | relURL }}">
+<link rel="preload" href="{{ "fonts/thmanyahsans-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/thmanyahserifdisplay-Black.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{ partial "styles.html" . }}
+{{- if .IsHome }}
+<script type="application/ld+json">
+{{- $o := dict "@context" "https://schema.org" "@type" "EducationalOrganization" "name" site.Title "alternateName" (site.Params.altName | default "") "url" site.Home.Permalink "logo" ("brand/boundless-symbol-full.svg" | absURL) "slogan" (site.Params.tagline | default "") -}}
+{{- with site.Params.sameAs }}{{ $o = merge $o (dict "sameAs" .) }}{{ end -}}
+{{- with site.Params.city }}{{ $o = merge $o (dict "address" (dict "@type" "PostalAddress" "addressLocality" . "addressCountry" "SY")) }}{{ end -}}
+{{ $o | jsonify | safeJS }}
+</script>
+{{- end }}
+{{- partial "head-extra.html" . }}

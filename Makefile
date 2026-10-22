@@ -6,7 +6,7 @@ HUGO_VERSION := $(shell cat .hugoversion)
 HUGO_BIN := .tools/hugo-$(HUGO_VERSION)/hugo
 HUGO ?= $(HUGO_BIN)
 
-.PHONY: help setup dev build test clean theme-update
+.PHONY: help setup dev build test clean
 
 help: ## Show available targets
 	@grep -E '^[a-z-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -28,8 +28,3 @@ test: setup ## Run the full test suite
 
 clean: ## Remove build artefacts (keeps the pinned Hugo binary)
 	rm -rf public resources .hugo_build.lock tests/.tmp
-
-theme-update: setup ## Deliberately update and re-vendor the Blowfish theme
-	$(HUGO) mod get -u github.com/nunocoracao/blowfish/v2
-	$(HUGO) mod vendor
-	@echo "Theme updated. Run 'make test' before committing."

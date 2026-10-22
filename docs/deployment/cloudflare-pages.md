@@ -1,7 +1,7 @@
 # Deploying to Cloudflare Pages
 
-The theme is vendored in `_vendor/`, so the build needs **neither Go nor network
-access**. Only Hugo is required.
+The Boundless theme lives in `themes/boundless/`, so the build needs **neither Go nor
+network access**. Only Hugo is required.
 
 ## Cloudflare Pages project settings
 
@@ -28,14 +28,14 @@ Set in **Settings → Environment variables**, for both Production and Preview:
 `HUGO_VERSION` must match `.hugoversion`. When you bump one, bump the other — the
 test suite asserts the runbook and the pin agree.
 
-Blowfish v2.105.0 supports Hugo 0.158.0–0.164.0. Setting a version outside that range
-produces an unsupported build.
+The theme uses the `locale` / `label` / `direction` language fields introduced in
+Hugo 0.158.0, so do not set a version below that.
 
 ## Before the first deploy
 
-1. Set the real domain in `config/_default/hugo.toml` → `baseURL`, including the
-   trailing slash. The placeholder `https://boundless.example/` produces broken
-   canonical URLs and `hreflang` tags in production.
+1. `config/_default/hugo.toml` → `baseURL` is set to `https://boundlessacademic.com/`.
+   If the domain changes, update it, including the trailing slash, or canonical URLs
+   and `hreflang` tags break.
 2. Run `make build` locally and confirm exit code 0.
 3. Push to `main`.
 
@@ -48,8 +48,8 @@ intended behaviour, not a broken pipeline.
 ## After the first deploy
 
 - Verify the custom domain and that HTTPS is active.
-- Verify `https://<domain>/` serves English and `https://<domain>/ar/` serves Arabic
-  with RTL layout.
+- Verify `https://<domain>/` serves Arabic with RTL layout and `https://<domain>/en/`
+  serves English. The old `/ar/` address redirects to `/`.
 - Add the site to Google Search Console and submit `sitemap.xml`.
 
 ## What this runbook does NOT cover

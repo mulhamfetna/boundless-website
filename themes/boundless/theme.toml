@@ -1,0 +1,7 @@
+name = "Boundless"
+description = "Arabic-first Hugo theme for boundlessacademic.com, built on the Boundless visual identity v1.0: three grounds, Thmanyah type, the photo-frame device."
+license = "Proprietary (Boundless Academic Services)"
+min_version = "0.128.0"
+[author]
+  name = "Boundless Academic Services"
+  homepage = "https://boundlessacademic.com"

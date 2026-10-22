@@ -4,16 +4,14 @@
 locale = "en"
 label = "English"
 direction = "ltr"
-weight = 1
-title = "Boundless Academic Services"
+weight = 2
+title = "Boundless"
 
 [params]
-  displayName = "EN"
-  isoCode = "en"
-  # Blowfish reads site.Params.rtl in layouts/_default/baseof.html to set dir=.
-  rtl = false
-  dateFormat = "2 January 2006"
-  description = "Unleash Your True Academic Potential. Scholarship mentorship, scientific research training, and global curricula."
+  description = "A youth academic community from Aleppo: applied research camps, methodology workshops and partnerships with local and international organisations."
+  homeTitle = "Boundless Academic Services · From research idea to publication"
+  footerText = "A youth academic community from Aleppo, taking students from a research idea to publication."
+  altName = "باوندلس للخدمات الأكاديمية"
 
 [params.author]
   name = "Boundless Academic Services"

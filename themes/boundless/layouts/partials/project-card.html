@@ -1,0 +1,12 @@
+<a class="card pcard" href="{{ .RelPermalink }}">
+  <div class="media">
+    {{- with .Params.image }}<img src="{{ . | relURL }}" alt="{{ $.Params.imageAlt }}" loading="lazy">
+    {{- else }}<div class="block {{ .Params.fill | default "sky" }}" aria-hidden="true"><b>{{ .Params.code }}</b></div>{{ end }}
+  </div>
+  <div class="body">
+    <div class="meta">{{ with .Params.code }}<span class="tag ltr">{{ . }}</span>{{ end }}{{ with .Params.status }}<span class="tag{{ if eq . "open" }} status-open{{ end }}">{{ i18n (printf "status_%s" .) }}</span>{{ end }}</div>
+    <b>{{ .Title }}</b>
+    {{- with .Params.summary | default .Description }}<p>{{ . }}</p>{{ end }}
+    <span class="more">{{ i18n "readMore" }} {{ i18n "arrow" }}</span>
+  </div>
+</a>

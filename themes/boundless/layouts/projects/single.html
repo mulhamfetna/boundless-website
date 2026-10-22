@@ -1,0 +1,49 @@
+{{ define "main" }}
+{{- $p := .Params -}}
+<section class="p-hero"><div class="wrap">
+  <div class="txt">
+    <div class="meta">{{ with $p.code }}<span class="tag ltr">{{ . }}</span>{{ end }}{{ with $p.status }}<span class="tag{{ if eq . "open" }} status-open{{ end }}">{{ i18n (printf "status_%s" .) }}</span>{{ end }}</div>
+    <h1>{{ partial "title.html" . }}</h1>
+    {{- with $p.lead | default .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    {{- with $p.facts }}<ul class="facts">{{ range . }}<li><span>{{ .label }}</span>{{ .value }}</li>{{ end }}</ul>{{ end }}
+    {{- with $p.register }}<div class="pills"><a class="pill sun" href="{{ .url }}" rel="noopener">{{ .label }}</a></div>{{ end }}
+  </div>
+  {{ partial "framed.html" (dict "img" $p.image "alt" $p.imageAlt "corner" ($p.corner | default "bl") "code" $p.code "fill" ($p.fill | default "sky") "eager" true "pos" $p.imagePos "ar" $p.imageRatio) }}
+</div></section>
+
+{{- with $p.stats }}
+<section class="band-ink"><div class="wrap">
+  <div class="stats">{{ range . }}<div class="stat"><b>{{ .value }}</b><span>{{ .label }}</span></div>{{ end }}</div>
+</div></section>
+{{- end }}
+
+{{- with .Content }}
+<section><div class="wrap"><div class="prose">{{ . }}</div></div></section>
+{{- end }}
+
+{{- with $p.steps }}
+<section{{ if $.Content }} style="padding-top:0"{{ end }}><div class="wrap">
+  <div class="sec-head"><h2>{{ $p.stepsTitle | default (i18n "howItWorks") }}</h2></div>
+  <ol class="steps">{{ range . }}<li><b>{{ .title }}</b>{{ with .text }}<p>{{ . }}</p>{{ end }}</li>{{ end }}</ol>
+</div></section>
+{{- end }}
+
+{{- with $p.gallery }}
+<section style="padding-top:0"><div class="wrap">
+  <div class="sec-head"><h2>{{ i18n "gallery" }}</h2></div>
+  <div class="gallery">{{ range . }}<figure><img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy">{{ with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}</figure>{{ end }}</div>
+</div></section>
+{{- end }}
+
+{{- with $p.partners }}
+<section class="band-teal"><div class="wrap">
+  <div class="sec-head"><h2>{{ i18n "partners" }}</h2></div>
+  <ul class="partners" style="padding:0;margin:0">{{ range . }}<li><span>{{ .name }}{{ with .role }}<span class="role">{{ . }}</span>{{ end }}</span></li>{{ end }}</ul>
+</div></section>
+{{- end }}
+
+<section><div class="wrap">
+  <div class="sec-head"><h2>{{ i18n "otherProjects" }}</h2></div>
+  <div class="cards">{{ range (where (where site.RegularPages "Section" "projects") "Permalink" "ne" .Permalink).ByWeight }}{{ partial "project-card.html" . }}{{ end }}</div>
+</div></section>
+{{ end }}

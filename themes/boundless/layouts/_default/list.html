@@ -1,0 +1,9 @@
+{{ define "main" }}
+<section class="p-hero" style="padding-bottom:40px"><div class="wrap" style="grid-template-columns:1fr">
+  <div class="txt"><h1>{{ partial "title.html" . }}</h1>{{ with .Params.lead | default .Description }}<p class="lead">{{ . }}</p>{{ end }}</div>
+</div></section>
+<section style="padding-top:0"><div class="wrap">
+  {{- with .Content }}<div class="prose" style="margin-bottom:44px">{{ . }}</div>{{ end }}
+  <div class="cards">{{ range .Pages.ByWeight }}{{ if eq .Section "projects" }}{{ partial "project-card.html" . }}{{ else }}<a class="card" href="{{ .RelPermalink }}"><b>{{ .Title }}</b>{{ with .Description }}<p>{{ . }}</p>{{ end }}<span class="more">{{ i18n "readMore" }} {{ i18n "arrow" }}</span></a>{{ end }}{{ end }}</div>
+</div></section>
+{{ end }}

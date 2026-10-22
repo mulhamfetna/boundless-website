@@ -4,16 +4,14 @@
 locale = "ar"
 label = "العربية"
 direction = "rtl"
-weight = 2
-title = "باوندلس للخدمات الأكاديمية"
+weight = 1
+title = "باوندلس"
 
 [params]
-  displayName = "ع"
-  isoCode = "ar"
-  # Blowfish reads site.Params.rtl in layouts/_default/baseof.html to set dir=.
-  rtl = true
-  dateFormat = "2 January 2006"
-  description = "أطلق إمكاناتك الأكاديمية الحقيقية. الإرشاد إلى المنح الدراسية، والتدريب على البحث العلمي، والمناهج الدولية."
+  description = "مجتمع أكاديمي شبابي من حلب: معسكرات بحث علمي تطبيقي، وورش منهجية، وشراكات مع جهات محلية ودولية."
+  homeTitle = "باوندلس للخدمات الأكاديمية · من الفكرة البحثية حتى النشر"
+  footerText = "مجتمع أكاديمي شبابي من حلب، يرافق الطلاب من الفكرة البحثية حتى النشر."
+  altName = "Boundless Academic Services"
 
 [params.author]
   name = "باوندلس للخدمات الأكاديمية"

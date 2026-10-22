@@ -1,0 +1,7 @@
+{{- /*
+  Site hook into the Boundless theme. The theme calls this partial at the top of
+  <head> on every page, with the Page as context, so per-page checks run here.
+
+  Do not remove the translation gate (spec decision D2).
+*/ -}}
+{{- partial "boundless/validate-translation.html" . -}}

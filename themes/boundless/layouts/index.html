@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{- $p := .Params -}}
+{{- with $p.hero }}
+<section class="hero"><div class="wrap">
+  <div class="txt">
+    {{- with .tag }}<span class="tag">{{ . }}</span>{{ end }}
+    <h1>{{ $t := .title }}{{ $m := .mark }}{{ if and $m (in $t $m) }}{{ replace $t $m (printf `<span class="mark">%s<svg viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path d="M296 11 C210 3 96 4 4 9"/></svg></span>` $m) | safeHTML }}{{ else }}{{ $t }}{{ end }}</h1>
+    {{- with .lead }}<p class="lead">{{ . }}</p>{{ end }}
+    {{- with .buttons }}<div class="pills">{{ range . }}<a class="pill {{ .style | default "primary" }}" href="{{ .url | relLangURL }}">{{ .label }}</a>{{ end }}</div>{{ end }}
+  </div>
+  {{ partial "framed.html" (dict "img" .image "alt" .imageAlt "corner" (.corner | default "bl") "code" "B" "eager" true) }}
+</div></section>
+{{- end }}
+
+{{- with $p.stats }}
+<section class="band-ink"><div class="wrap">
+  {{- with .title }}<div class="sec-head"><h2>{{ . }}</h2>{{ with $p.stats.lead }}<p>{{ . }}</p>{{ end }}</div>{{ end }}
+  <div class="stats">{{ range .items }}<div class="stat"><b>{{ .value }}</b><span>{{ .label }}</span></div>{{ end }}</div>
+</div></section>
+{{- end }}
+
+{{- with $p.projects }}
+<section id="projects"><div class="wrap">
+  <div class="sec-head"><h2>{{ .title }}</h2>{{ with .lead }}<p>{{ . }}</p>{{ end }}</div>
+  <div class="cards">{{ range (where site.RegularPages "Section" "projects").ByWeight }}{{ partial "project-card.html" . }}{{ end }}</div>
+</div></section>
+{{- end }}
+
+{{- with $p.tracks }}
+<section class="band-section" style="padding-top:0"><div class="wrap">
+  <div class="sec-head"><h2>{{ .title }}</h2>{{ with .lead }}<p>{{ . }}</p>{{ end }}</div>
+  <div class="cards">{{ range .items }}<div class="card"><span class="ico {{ .icon }}" aria-hidden="true"></span><b>{{ .title }}</b><p>{{ .text }}</p></div>{{ end }}</div>
+</div></section>
+{{- end }}
+
+{{- with $p.band }}
+<section class="band-teal"><div class="wrap split">
+  <div class="txt">
+    {{- with .label }}<span class="tag on-dark">{{ . }}</span>{{ end }}
+    <h2>{{ .title }}</h2>
+    {{- with .lead }}<p class="lead">{{ . }}</p>{{ end }}
+    {{- with .bullets }}<ul class="bullets">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+    {{- with .button }}<a class="pill {{ .style | default "sun" }}" href="{{ .url | relLangURL }}">{{ .label }}</a>{{ end }}
+  </div>
+  {{ partial "framed.html" (dict "img" .image "alt" .imageAlt "corner" (.corner | default "bl") "ar" "4/3" "code" .code "fill" "ink") }}
+</div></section>
+{{- end }}
+
+{{- with $p.partners }}
+<section><div class="wrap">
+  <div class="sec-head"><h2>{{ .title }}</h2>{{ with .lead }}<p>{{ . }}</p>{{ end }}</div>
+  <ul class="partners" style="padding:0;margin:0">{{ range .items }}<li>{{ if .url }}<a href="{{ .url }}" rel="noopener">{{ .name }}</a>{{ else }}<span>{{ .name }}{{ with .role }}<span class="role">{{ . }}</span>{{ end }}</span>{{ end }}</li>{{ end }}</ul>
+</div></section>
+{{- end }}
+{{ end }}

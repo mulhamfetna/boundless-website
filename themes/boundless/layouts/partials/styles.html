@@ -1,0 +1,12 @@
+{{- /*
+  Bundles the theme stylesheets into one fingerprinted file.
+  Order: fonts, tokens, components. resources.Concat does not resolve CSS imports,
+  so files are joined here explicitly. A site overrides any of them by placing a
+  file with the same path in its own assets/ folder (for example assets/css/tokens.css).
+*/ -}}
+{{- $sheets := slice -}}
+{{- range slice "css/fonts.css" "css/tokens.css" "css/boundless.css" -}}
+  {{- with resources.Get . }}{{ $sheets = $sheets | append . }}{{ end -}}
+{{- end -}}
+{{- $bundle := $sheets | resources.Concat "css/boundless.bundle.css" | resources.Minify | resources.Fingerprint "sha256" -}}
+<link rel="stylesheet" href="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}">

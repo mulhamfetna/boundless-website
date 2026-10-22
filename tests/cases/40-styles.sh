@@ -10,35 +10,32 @@ OUT="tests/.tmp/styles"
 rm -rf "$OUT"
 "$HUGO" --quiet --destination "$OUT" >/dev/null 2>&1
 
-assert_file_exists "custom stylesheet is authored" "assets/css/custom.css"
-assert_file_exists "design tokens are a separate file" "assets/css/tokens.css"
-assert_file_exists "RTL corrections are a separate file" "assets/css/rtl.css"
+CSS="themes/boundless/assets/css"
+assert_file_exists "design tokens are a separate file" "$CSS/tokens.css"
+assert_file_exists "font faces are a separate file" "$CSS/fonts.css"
+assert_file_exists "components are a separate file" "$CSS/boundless.css"
 
-assert_file_contains "tokens declare the primary colour" \
-  "assets/css/tokens.css" "--bl-color-primary"
-assert_file_contains "tokens declare the Arabic font stack" \
-  "assets/css/tokens.css" "--bl-font-arabic"
+assert_file_contains "tokens declare the primary colour" "$CSS/tokens.css" "--bl-color-primary"
+assert_file_contains "tokens declare the brand teal" "$CSS/tokens.css" "--bl-color-teal:#146C94"
+assert_file_contains "tokens declare the Arabic font stack" "$CSS/tokens.css" "--bl-font-arabic"
 
-# Identity lives in tokens.css only.
-assert_file_not_contains "rtl.css hard-codes no hex colours" "assets/css/rtl.css" "#"
+# Identity lives in tokens.css only: the component sheet may not hard-code colours.
+assert_equals "components hard-code no hex colours" "0" \
+  "$(grep -cE '#[0-9A-Fa-f]{3,6}\b' "$CSS/boundless.css")"
 
-# The theme must actually pick the custom CSS up.
+# The bundle must actually reach the page.
 css_found=0
 for f in $(find "$OUT" -name '*.css' 2>/dev/null); do
   if grep -qF -- "--bl-color-primary" "$f"; then css_found=1; break; fi
 done
 assert_equals "tokens reach the built stylesheet" "1" "$css_found"
+assert_file_contains "the page links one fingerprinted bundle" "$OUT/index.html" "boundless.bundle.min."
 
-# Regression guard: Hugo's resources.Concat joins files byte-for-byte and does NOT
-# resolve CSS @import. An @import in a bundled stylesheet is a silently dead
-# reference. Tokens must be bundled by boundless/styles.html, never imported.
-# Line-anchored: an actual import statement, not the word inside an explanatory comment.
-assert_equals "custom.css contains no @import statement" "0" \
-  "$(grep -cE '^[[:space:]]*@import' assets/css/custom.css)"
+# resources.Concat does not resolve CSS imports, so an import would be a dead reference.
 dead_import=0
-for f in $(find "$OUT" -name '*.css' 2>/dev/null); do
-  if grep -qF -- "@import" "$f"; then dead_import=1; break; fi
+for f in "$CSS"/*.css $(find "$OUT" -name '*.css' 2>/dev/null); do
+  if grep -qE '^[[:space:]]*@import' "$f"; then dead_import=1; break; fi
 done
-assert_equals "no @import survives into any built stylesheet" "0" "$dead_import"
+assert_equals "no @import in source or built stylesheets" "0" "$dead_import"
 
 finish

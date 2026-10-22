@@ -1,0 +1,20 @@
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <img src="{{ "brand/boundless-horizontal-reversed.svg" | relURL }}" alt="{{ site.Title }}" width="180" height="44">
+        {{- with site.Params.footerText }}<p>{{ . }}</p>{{ end }}
+      </div>
+      <div><b>{{ i18n "projects" }}</b>
+        <ul>{{ range (where site.RegularPages "Section" "projects").ByWeight }}<li><a href="{{ .RelPermalink }}">{{ .Params.code | default .Title }}</a></li>{{ end }}</ul>
+      </div>
+      <div><b>{{ i18n "contact" }}</b>
+        <ul>
+          {{- with site.Params.email }}<li><a class="ltr" href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}
+          {{- range site.Params.social }}<li><a class="ltr" href="{{ .url }}" rel="me noopener">{{ .name }}</a></li>{{ end }}
+        </ul>
+      </div>
+    </div>
+    <div class="base"><span>© {{ now.Year }} {{ i18n "copyright" }}</span><span>{{ site.Params.tagline }}</span></div>
+  </div>
+</footer>

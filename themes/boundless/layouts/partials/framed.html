@@ -1,0 +1,10 @@
+{{- /* dict "img" path "alt" text "corner" bl|br|tl|tr "ar" css-ratio "code" fallback-text "fill" sky|ink|teal */ -}}
+{{- $corner := .corner | default "bl" -}}
+<div class="framed" data-corner="{{ $corner }}"{{ with .ar }} style="--bl-ratio:{{ . }}"{{ end }}>
+  <span class="fr" aria-hidden="true"></span>
+  <div class="photo">
+    {{- if .img }}<img src="{{ .img | relURL }}" alt="{{ .alt }}"{{ with .pos }} style="object-position:{{ . }}"{{ end }}{{ if .eager }} fetchpriority="high"{{ else }} loading="lazy"{{ end }}>
+    {{- else }}<div class="block {{ .fill | default "sky" }}" aria-hidden="true"><b>{{ .code }}</b></div>{{ end }}
+    <span class="fr" aria-hidden="true"></span>
+  </div>
+</div>

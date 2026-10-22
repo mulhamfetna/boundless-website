@@ -1,9 +1,24 @@
 [[main]]
-  name = "من نحن"
-  pageRef = "/about"
-  weight = 10
+  name = "الرئيسية"
+  pageRef = "/"
+  weight = 1
 
-[[footer]]
+[[main]]
+  name = "SRC1"
+  pageRef = "/projects/src1"
+  weight = 2
+
+[[main]]
+  name = "SRC2"
+  pageRef = "/projects/src2"
+  weight = 3
+
+[[main]]
+  name = "GEW"
+  pageRef = "/projects/gew"
+  weight = 4
+
+[[main]]
   name = "من نحن"
   pageRef = "/about"
   weight = 10

@@ -1,0 +1,6 @@
+{{- /* Title with the hand mark under one phrase. Front matter: mark = "phrase" (must appear in the title). Pages with a Sun button leave mark empty: Sun once per page. */ -}}
+{{- $t := .Title -}}{{- $m := .Params.mark -}}
+{{- if and $m (in $t $m) -}}
+{{- $svg := `<svg viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path d="M296 11 C210 3 96 4 4 9"/></svg>` -}}
+{{- replace $t $m (printf `<span class="mark">%s%s</span>` $m $svg) | safeHTML -}}
+{{- else -}}{{ $t }}{{- end -}}

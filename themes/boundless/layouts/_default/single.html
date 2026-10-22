@@ -1,0 +1,6 @@
+{{ define "main" }}
+<section class="p-hero" style="padding-bottom:40px"><div class="wrap" style="grid-template-columns:1fr">
+  <div class="txt"><h1>{{ partial "title.html" . }}</h1>{{ with .Params.lead | default .Description }}<p class="lead">{{ . }}</p>{{ end }}</div>
+</div></section>
+<section style="padding-top:0"><div class="wrap"><div class="prose">{{ .Content }}</div></div></section>
+{{ end }}

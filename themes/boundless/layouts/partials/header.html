@@ -1,0 +1,20 @@
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="{{ site.Home.RelPermalink }}" aria-label="{{ site.Title }}">
+      <picture>
+        <source srcset="{{ site.Params.logoDark | default "brand/boundless-horizontal-reversed.svg" | relURL }}" media="(prefers-color-scheme: dark)">
+        <img src="{{ site.Params.logo | default "brand/boundless-horizontal-full.svg" | relURL }}" alt="{{ site.Title }}" width="180" height="44">
+      </picture>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">{{ i18n "menu" }}</button>
+    <nav id="site-nav" aria-label="{{ i18n "mainNav" }}">
+      <ul class="nav">
+        {{- $cur := . }}
+        {{- range site.Menus.main }}
+        <li><a href="{{ .URL | relLangURL }}"{{ if or ($cur.IsMenuCurrent "main" .) (eq (.URL | relLangURL) $cur.RelPermalink) }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{- end }}
+        {{- range .Translations }}<li class="lang"><a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}">{{ .Language.Label }}</a></li>{{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>
