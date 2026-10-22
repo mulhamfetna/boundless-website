@@ -2,13 +2,25 @@
 tagline = "Unleash Your TRUE Academic Potential"
 city = "Aleppo"
 ogImage = "images/og.png"
-email = "[EMAIL]"
-sameAs = ["https://instagram.com/boundless.academics"]
+email = "contact@boundlessacademic.com"
+sameAs = [
+  "https://www.instagram.com/boundless.academics",
+  "https://www.facebook.com/share/1DNUL8uHi2/",
+]
+
+# Footer contact addresses. labelKey is an i18n key so the label follows the page language.
+[[emails]]
+  address = "contact@boundlessacademic.com"
+  labelKey = "emailGeneral"
+
+[[emails]]
+  address = "contact@mulhamfetna.com"
+  labelKey = "emailFounder"
 
 [[social]]
-  name = "@boundless.academics"
-  url = "https://instagram.com/boundless.academics"
+  name = "Instagram · @boundless.academics"
+  url = "https://www.instagram.com/boundless.academics"
 
 [[social]]
   name = "Facebook"
-  url = "[FACEBOOK URL]"
+  url = "https://www.facebook.com/share/1DNUL8uHi2/"

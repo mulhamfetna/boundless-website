@@ -8,7 +8,7 @@ hero:
   lead: "معسكرات بحث علمي تطبيقي، وورش منهجية، وشراكات تفتح لطلاب الجامعات طريق البحث والمبادرة."
   buttons:
     - { label: "تعرّف على مشاريعنا", url: "#projects" }
-    - { label: "تابعنا على إنستغرام", url: "https://instagram.com/boundless.academics", style: "secondary" }
+    - { label: "تابعنا على إنستغرام", url: "https://www.instagram.com/boundless.academics", style: "secondary" }
   image: "images/boundless-team.jpg"
   imageAlt: "فريق باوندلس ومشاركون في إحدى فعالياتها"
   corner: "bl"

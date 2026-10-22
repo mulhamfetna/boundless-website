@@ -10,7 +10,8 @@
       </div>
       <div><b>{{ i18n "contact" }}</b>
         <ul>
-          {{- with site.Params.email }}<li><a class="ltr" href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}
+          {{- with site.Params.emails }}{{ range . }}<li><span class="lbl">{{ i18n .labelKey }}</span><a class="ltr" href="mailto:{{ .address }}">{{ .address }}</a></li>{{ end }}
+          {{- else }}{{ with site.Params.email }}<li><a class="ltr" href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}{{ end }}
           {{- range site.Params.social }}<li><a class="ltr" href="{{ .url }}" rel="me noopener">{{ .name }}</a></li>{{ end }}
         </ul>
       </div>

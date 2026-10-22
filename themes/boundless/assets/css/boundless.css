@@ -160,6 +160,7 @@ a.card:hover{border-color:var(--bl-text-accent)}
 .site-foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:17px}
 .site-foot a{color:var(--bl-on-dark-muted);text-decoration:none}
 .site-foot a:hover{color:var(--bl-color-white)}
+.site-foot .lbl{display:block;font-size:14px;color:var(--bl-on-dark-muted);opacity:.8}
 .site-foot .about{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
 .site-foot .about p{margin:0;font-size:17px;max-width:400px}
 .site-foot .base{border-top:1px solid var(--bl-color-ink-raised);margin-top:48px;padding-top:24px;font-size:15px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}

@@ -8,7 +8,7 @@ hero:
   lead: "Applied research camps, methodology workshops and partnerships that open the path to research and initiative for university students."
   buttons:
     - { label: "See our projects", url: "#projects" }
-    - { label: "Follow us on Instagram", url: "https://instagram.com/boundless.academics", style: "secondary" }
+    - { label: "Follow us on Instagram", url: "https://www.instagram.com/boundless.academics", style: "secondary" }
   image: "images/boundless-team.jpg"
   imageAlt: "The Boundless team and participants at one of its events"
   corner: "br"
