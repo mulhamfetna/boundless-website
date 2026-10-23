@@ -5,21 +5,21 @@ code: "SRC2"
 weight: 2
 status: "running"
 mark: "Camp 2"
-summary: "40 hours of training in 14 sessions, hosted with Sanad Youth for Development. The research fellowship starts soon."
-lead: "40 youth researchers and 40 hours of training in 14 sessions. Training is complete; the research fellowship starts soon."
-image: "images/src2-session-hammal.jpg"
+summary: "56 youth researchers trained over 40 hours in 14 sessions, incubated by Sanad Youth and supported by UNFPA Syria. The research fellowship starts soon."
+lead: "56 youth researchers, from 90 who registered, trained over 40 hours in 14 sessions. Training is complete; the research fellowship has not started yet and starts soon."
+image: "images/src2-hero-hammal.jpg"
 imageAlt: "Dr. Abdulrazzak Hammal leading a camp session"
 corner: "br"
-imagePos: "72% 50%"
+imagePos: "50% 40%"
 imageRatio: "4/3"
 facts:
-  - { label: "Training", value: "40 hours · complete" }
-  - { label: "Place", value: "Sanad Mechanics Center, Aleppo · in person" }
+  - { label: "Training", value: "June – September 2026 · complete" }
+  - { label: "Place", value: "Sanad Main Center, Aleppo · in person" }
   - { label: "Fee", value: "Free" }
   - { label: "Research fellowship", value: "Starts soon" }
 stats:
   - { value: "90", label: "registered for the camp" }
-  - { value: "40", label: "youth researchers through training" }
+  - { value: "56", label: "youth researchers trained" }
   - { value: "40", label: "hours of training" }
   - { value: "14", label: "training sessions" }
 sessionsTitle: "Training sessions"
@@ -52,21 +52,18 @@ people:
       - "A professional research profile on LinkedIn, ORCID, ResearchGate and Google Scholar"
       - "Professional correspondence and building a network"
       - "A professional academic CV"
-featuresTitle: "The research fellowship"
-featuresLead: "After training, each participant joins the track that fits where their research is."
-features:
-  - { title: "Publishing support", text: "Researchers with finished work get revision, translation and publishing support from Boundless experts, as co-authors." }
-  - { title: "Institutional research", text: "Top performers join research projects that Boundless leads." }
-  - { title: "Research incubation", text: "Researchers with an original idea get help finding supervision and funding." }
 stepsTitle: "Camp stages"
 steps:
-  - { title: "Training", text: "40 hours in 14 sessions: applied research method, statistics, AI tools and the researcher's professional presence. Complete." }
+  - { title: "Training", text: "40 hours in 14 sessions: applied research method, statistics, AI tools and the researcher's professional presence. Launched in June, paused in July for university exams, second phase in August and September. Complete." }
   - { title: "Research fellowship", text: "Research teams with academic supervision work towards publishable papers. Starts soon." }
   - { title: "Publication and the blog", text: "Papers submitted to peer-reviewed journals, and the launch of the Boundless Research Blog." }
 gallery:
-  - { src: "images/src2-stage1-group.jpg", alt: "Camp participants with the trainers", caption: "Camp participants" }
+  - { src: "images/src2-gallery-orientation.jpg", alt: "Eng. Mulham Fetna presenting the camp at the orientation session", caption: "Orientation session" }
+  - { src: "images/src2-gallery-session.jpg", alt: "Participants of the second camp during a training session", caption: "Applied research fundamentals" }
 partners:
-  - { name: "Sanad Youth for Development", role: "Strategic partner" }
+  - { name: "Sanad Youth for Development", role: "Incubator" }
+  - { name: "UNFPA Syria", role: "Supporter and funder" }
+attribution: "Funded by UNFPA Syria and supported by Sanad Youth for Development."
 ---
 ## Why this camp
 

@@ -17,6 +17,17 @@ sameAs = [
   address = "contact@mulhamfetna.com"
   labelKey = "emailFounder"
 
+# Websites shown in the footer. labelKey is an i18n key.
+[[links]]
+  text = "boundlessacademic.com"
+  url = "https://boundlessacademic.com"
+  labelKey = "website"
+
+[[links]]
+  text = "mulhamfetna.com"
+  url = "https://mulhamfetna.com"
+  labelKey = "founderWebsite"
+
 [[social]]
   name = "Instagram · @boundless.academics"
   url = "https://www.instagram.com/boundless.academics"

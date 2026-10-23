@@ -12,6 +12,7 @@
         <ul>
           {{- with site.Params.emails }}{{ range . }}<li><span class="lbl">{{ i18n .labelKey }}</span><a class="ltr" href="mailto:{{ .address }}">{{ .address }}</a></li>{{ end }}
           {{- else }}{{ with site.Params.email }}<li><a class="ltr" href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}{{ end }}
+          {{- range site.Params.links }}<li><span class="lbl">{{ i18n .labelKey }}</span><a class="ltr" href="{{ .url }}" rel="noopener">{{ .text }}</a></li>{{ end }}
           {{- range site.Params.social }}<li><a class="ltr" href="{{ .url }}" rel="me noopener">{{ .name }}</a></li>{{ end }}
         </ul>
       </div>

@@ -5,20 +5,23 @@ code: "SRC1"
 weight: 1
 status: "completed"
 mark: "Camp 1"
-summary: "40 hours of training in 11 workshops, then a three-month research fellowship that ended in a paper published in a Q1 journal."
-lead: "40 graduates, 40 hours of training in 11 workshops, then a three-month research fellowship that ended in a paper published in Hybrid Advances, a Q1 journal, with more papers in progress."
+summary: "40 hours of training in 11 workshops, then a three-month research fellowship that ended in a paper published in a Q2 journal."
+lead: "40 graduates, 40 hours of training in 11 workshops, then a three-month research fellowship that ended in an original paper published in Hybrid Advances, a Q2 journal. Two more papers are close to publication."
 fill: "sky"
+image: "images/src1-hero-statistics.jpg"
+imageAlt: "A statistics session in the first research camp"
+corner: "bl"
+imageRatio: "4/3"
 facts:
   - { label: "Training", value: "October 2025 – January 2026" }
-  - { label: "Place", value: "Sanad Mechanics Center, Aleppo" }
+  - { label: "Place", value: "Sanad Main Center, Aleppo" }
   - { label: "Schedule", value: "Saturdays and Tuesdays, 3–6 pm" }
   - { label: "Fee", value: "Free" }
 stats:
   - { value: "40", label: "graduates" }
   - { value: "40", label: "hours of training" }
   - { value: "11", label: "workshops" }
-  - { value: "9", label: "research teams in the fellowship" }
-  - { value: "Q1", label: "paper published in Hybrid Advances" }
+  - { value: "Q2", label: "original paper published in Hybrid Advances" }
 sessionsTitle: "Workshops"
 sessionsLead: "11 workshops across 40 hours of training."
 sessions:
@@ -58,12 +61,16 @@ people:
     role: "R&D and industry needs"
 stepsTitle: "Camp stages"
 steps:
-  - { title: "Training", text: "40 hours in 11 workshops at the Sanad Mechanics Center: research method, statistics, AI tools and the researcher's professional presence." }
-  - { title: "Research fellowship", text: "Three months of work in 9 research teams with academic supervision, in the Chemistry Lab of the Faculty of Civil Engineering, University of Aleppo." }
-  - { title: "Publication", text: "A paper published in a Q1 journal, with more papers in progress." }
+  - { title: "Training", text: "40 hours in 11 workshops at the Sanad Main Center: research method, statistics, AI tools and the researcher's professional presence." }
+  - { title: "Research fellowship", text: "Three months of work in research teams with academic supervision." }
+  - { title: "Publication", text: "An original paper published in a Q2 journal, and two more close to publication." }
+gallery:
+  - { src: "images/src1-gallery-hammal.jpg", alt: "Dr. Abdulrazzak Hammal leading a session at the Sanad Main Center", caption: "Applied research fundamentals" }
+  - { src: "images/src1-gallery-room.jpg", alt: "Participants of the first camp during a training session", caption: "A training session" }
+  - { src: "images/src1-gallery-graduation.jpg", alt: "Graduates of the first camp with their certificates", caption: "Graduation, February 2026" }
 partners:
-  - { name: "Sanad Youth for Development", role: "Strategic partner" }
-  - { name: "UNFPA Syria", role: "Donor" }
+  - { name: "Sanad Youth for Development", role: "Incubator" }
+  - { name: "UNFPA Syria", role: "Supporter and funder" }
 attribution: "Funded by UNFPA Syria and supported by Sanad Youth for Development."
 ---
 ## What the training covered
@@ -75,10 +82,6 @@ attribution: "Funded by UNFPA Syria and supported by Sanad Youth for Development
 - From research to the labour market: market need and economic feasibility
 - The researcher's professional digital presence, research correspondence, and building partnerships
 
-## The research fellowship
-
-After training, participants formed 9 research teams. Some teams had a defined gap, a supervisor and support and worked towards publication; others were still securing supervision or refining their gap. The teams met twice a week in the Chemistry Lab of the Faculty of Civil Engineering at the University of Aleppo.
-
 ## The published paper
 
 > **Design and evaluation of triple-doped nano-hydroxyapatite (Mg/Si/Zn-HAP) as multi-step intelligent scaffold for bone healing**
@@ -86,7 +89,7 @@ After training, participants formed 9 research teams. Some teams had a defined g
 
 The research develops nano-scale "smart scaffolds" that help bones heal faster and better, opening new directions in biomedical treatment. It was written by a team of the camp's student researchers with Dr. Abdulrazzak Hammal.
 
-Three more papers from the fellowship are in progress.
+Two more papers from the fellowship are close to publication.
 
 ## What came next
 

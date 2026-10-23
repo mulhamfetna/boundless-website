@@ -13,13 +13,19 @@ assert_exit_code "full site builds" 0 "$HUGO" --quiet --destination "$OUT"
 
 for d in "" "en/"; do
   assert_file_contains "${d:-ar/} SRC1 shows trainers" "$OUT/${d}projects/src1/index.html" 'class="people"'
-  assert_file_contains "${d:-ar/} SRC2 shows fellowship tracks" "$OUT/${d}projects/src2/index.html" 'class="features"'
+  assert_file_contains "${d:-ar/} SRC2 carries the donor attribution" "$OUT/${d}projects/src2/index.html" 'class="attribution"'
+  assert_file_not_contains "${d:-ar/} home no longer claims Q1" "$OUT/${d}index.html" "Q1"
   assert_file_contains "${d:-ar/} SRC1 carries the donor attribution" "$OUT/${d}projects/src1/index.html" 'class="attribution"'
   assert_file_contains "${d:-ar/} GEW carries the required attribution" "$OUT/${d}projects/gew/index.html" 'class="attribution"'
 done
 
 assert_file_contains "GEW uses the official Arabic name" "$OUT/projects/gew/index.html" "الأسبوع العالمي لريادة الأعمال"
 assert_file_contains "GEW shows the 2026 dates" "$OUT/en/projects/gew/index.html" "1–5 November 2026"
-assert_file_not_contains "SRC2 no longer lists UNFPA as donor (unconfirmed)" "$OUT/en/projects/src2/index.html" "UNFPA"
+assert_file_contains "SRC2 lists UNFPA as supporter and funder" "$OUT/en/projects/src2/index.html" "UNFPA"
+assert_file_contains "SRC1 states the Q2 quartile" "$OUT/en/projects/src1/index.html" "Q2"
+assert_file_contains "footer links the founder's website" "$OUT/en/index.html" "mulhamfetna.com"
+for img in home-hero-src1-graduation home-band-src1-session src1-hero-statistics src2-hero-hammal; do
+  assert_file_exists "photo $img is published" "$OUT/images/$img.jpg"
+done
 
 finish
