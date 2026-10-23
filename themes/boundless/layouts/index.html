@@ -26,6 +26,13 @@
 </div></section>
 {{- end }}
 
+{{- with $p.milestones }}
+<section id="milestones"><div class="wrap">
+  <div class="sec-head"><h2>{{ .title }}</h2>{{ with .lead }}<p>{{ . }}</p>{{ end }}</div>
+  <ol class="timeline">{{ range .items }}<li><span class="tag">{{ .when }}</span><b>{{ .title }}</b>{{ with .text }}<p>{{ . }}</p>{{ end }}</li>{{ end }}</ol>
+</div></section>
+{{- end }}
+
 {{- with $p.tracks }}
 <section class="band-section" style="padding-top:0"><div class="wrap">
   <div class="sec-head"><h2>{{ .title }}</h2>{{ with .lead }}<p>{{ . }}</p>{{ end }}</div>
@@ -44,6 +51,17 @@
   </div>
   {{ partial "framed.html" (dict "img" .image "alt" .imageAlt "corner" (.corner | default "bl") "ar" "4/3" "code" .code "fill" "ink") }}
 </div></section>
+{{- end }}
+
+{{- with $p.blog }}
+{{- $posts := (where site.RegularPages "Section" "blog").ByWeight }}
+{{- if $posts }}
+<section id="blog"><div class="wrap">
+  <div class="sec-head"><h2>{{ .title }}</h2>{{ with .lead }}<p>{{ . }}</p>{{ end }}</div>
+  <div class="cards">{{ range first (.count | default 3) $posts }}<a class="card" href="{{ .RelPermalink }}"><span class="tag">{{ i18n "blogTag" }}</span><b>{{ .Title }}</b>{{ with .Description }}<p>{{ . }}</p>{{ end }}<span class="more">{{ i18n "readMore" }} {{ i18n "arrow" }}</span></a>{{ end }}</div>
+  {{- with site.GetPage "/blog" }}<div class="pills" style="margin-top:32px"><a class="pill secondary" href="{{ .RelPermalink }}">{{ i18n "allArticles" }}</a></div>{{ end }}
+</div></section>
+{{- end }}
 {{- end }}
 
 {{- with $p.partners }}
