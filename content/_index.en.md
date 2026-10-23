@@ -14,7 +14,7 @@ hero:
   corner: "br"
 stats:
   items:
-    - { value: "90", label: "youth researchers across two camps" }
+    - { value: "80", label: "youth researchers trained across two camps" }
     - { value: "80", label: "hours of training" }
     - { value: "25", label: "workshops and training sessions" }
     - { value: "Q1", label: "paper published in Hybrid Advances" }
@@ -35,7 +35,7 @@ band:
 partners:
   title: "We have worked with"
   items:
-    - { name: "Sanad Youth for Development", role: "SRC2" }
-    - { name: "UNFPA Syria", role: "SRC2" }
-    - { name: "Startup Syria", role: "GEW" }
+    - { name: "Sanad Youth for Development", role: "SRC1 · SRC2" }
+    - { name: "UNFPA Syria", role: "SRC1" }
+    - { name: "Startup Syria", role: "GEW Syria 2026" }
 ---

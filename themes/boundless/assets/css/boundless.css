@@ -172,3 +172,15 @@ a.card:hover{border-color:var(--bl-text-accent)}
 @media print{.site-head,.site-foot{display:none}}
 [dir=rtl] .stat b{text-align:right}
 
+/* People (trainers) and feature cards on project pages */
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.person{background:var(--bl-surface-raised);border:2px solid var(--bl-line);border-radius:var(--bl-radius-card);padding:30px;display:flex;flex-direction:column;gap:8px}
+.person b{font-size:22px;line-height:1.4}
+.person .role{font-size:16px;font-weight:700;color:var(--bl-text-accent)}
+.person ul{margin:8px 0 0;padding-inline-start:1.1em;font-size:16px;line-height:1.65;color:var(--bl-text-muted)}
+.person li::marker{color:var(--bl-text-accent)}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.feature{border-top:6px solid var(--bl-color-sky);padding-top:20px;display:flex;flex-direction:column;gap:10px}
+.feature b{font-size:22px;line-height:1.4}
+.feature p{margin:0;font-size:17px;line-height:1.7;color:var(--bl-text-muted)}
+.attribution{margin:32px 0 0;max-width:820px;font-size:17px;line-height:1.7;color:var(--bl-on-dark-secondary)}

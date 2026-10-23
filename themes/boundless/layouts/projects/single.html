@@ -24,8 +24,22 @@
 </div></section>
 {{- end }}
 
+{{- with $p.people }}
+<section style="padding-top:0"><div class="wrap">
+  <div class="sec-head"><h2>{{ $p.peopleTitle | default (i18n "trainers") }}</h2>{{ with $p.peopleLead }}<p>{{ . }}</p>{{ end }}</div>
+  <div class="people">{{ range . }}<article class="person"><b>{{ .name }}</b>{{ with .role }}<span class="role">{{ . }}</span>{{ end }}{{ with .bio }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}</article>{{ end }}</div>
+</div></section>
+{{- end }}
+
 {{- with .Content }}
 <section><div class="wrap"><div class="prose">{{ . }}</div></div></section>
+{{- end }}
+
+{{- with $p.features }}
+<section{{ if $.Content }} style="padding-top:0"{{ end }}><div class="wrap">
+  <div class="sec-head"><h2>{{ $p.featuresTitle }}</h2>{{ with $p.featuresLead }}<p>{{ . }}</p>{{ end }}</div>
+  <div class="features">{{ range . }}<div class="feature"><b>{{ .title }}</b>{{ with .text }}<p>{{ . }}</p>{{ end }}</div>{{ end }}</div>
+</div></section>
 {{- end }}
 
 {{- with $p.steps }}
@@ -46,6 +60,7 @@
 <section class="band-teal"><div class="wrap">
   <div class="sec-head"><h2>{{ i18n "partners" }}</h2></div>
   <ul class="partners" style="padding:0;margin:0">{{ range . }}<li><span>{{ .name }}{{ with .role }}<span class="role">{{ . }}</span>{{ end }}</span></li>{{ end }}</ul>
+  {{- with $p.attribution }}<p class="attribution">{{ . }}</p>{{ end }}
 </div></section>
 {{- end }}
 
