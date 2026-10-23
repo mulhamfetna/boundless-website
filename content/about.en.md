@@ -47,12 +47,15 @@ free of charge.
 - **Graduates who lead.** Graduates of our first camp became the organising team
   of the second.
 
+## Our network
+
+Through our founder's academic and professional network, we are connected with more
+than 160 Syrian PhD researchers in Syria and around the world who support our
+projects.
+
 ## Founder
 
-Boundless was founded by **Eng. Mulham Fetna**, its CEO. Through his academic and
-professional network, Boundless can draw on the support of Syrian academics and
-researchers in Syria and abroad who back his projects.
-
+Boundless was founded by **Eng. Mulham Fetna**, its CEO.
 Website: [mulhamfetna.com](https://mulhamfetna.com) · Email:
 [contact@mulhamfetna.com](mailto:contact@mulhamfetna.com).
 
