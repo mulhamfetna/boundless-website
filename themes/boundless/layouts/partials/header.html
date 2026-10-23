@@ -13,7 +13,7 @@
         {{- range site.Menus.main }}
         <li><a href="{{ .URL | relLangURL }}"{{ if or ($cur.IsMenuCurrent "main" .) (eq (.URL | relLangURL) $cur.RelPermalink) }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
         {{- end }}
-        {{- range .Translations }}<li class="lang"><a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}">{{ .Language.Label }}</a></li>{{ end }}
+        {{- range .Translations }}<li class="lang"><a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}">{{ (partial "lang-info.html" .Language).label }}</a></li>{{ end }}
       </ul>
     </nav>
   </div>

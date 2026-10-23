@@ -16,7 +16,8 @@
 <meta property="og:locale" content="{{ cond (eq site.Language.Lang "ar") "ar_SY" "en_US" }}">
 {{- with $img }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
 <meta name="twitter:card" content="summary_large_image">
-{{- range .AllTranslations }}<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">{{ if eq .Language.Lang hugo.Sites.Default.Language.Lang }}<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">{{ end }}{{ end }}
+{{- range .AllTranslations }}<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">{{ end }}
+{{- with .AllTranslations }}{{ with index . 0 }}<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">{{ end }}{{ end }}
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 <link rel="icon" href="{{ "favicon-32.png" | relURL }}" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="{{ "favicon-180.png" | relURL }}">

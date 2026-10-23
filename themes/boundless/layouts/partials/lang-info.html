@@ -1,0 +1,20 @@
+{{- /*
+  Returns dict "locale" "dir" "label" for a Language, on any Hugo the theme supports.
+
+  Hugo 0.158.0 replaced languageCode / languageName / languageDirection with
+  locale / label / direction. The newer fields are read only when Hugo has them,
+  so a build host running an older Hugo (for example a Cloudflare Pages project
+  without HUGO_VERSION set) still renders correct lang and dir attributes instead
+  of failing the whole build.
+*/ -}}
+{{- $l := . -}}
+{{- $code := $l.Lang -}}
+{{- $locale := $code -}}
+{{- $dir := cond (in (slice "ar" "fa" "he" "ur" "ps" "ku") $code) "rtl" "ltr" -}}
+{{- $label := index (dict "ar" "العربية" "en" "English" "fr" "Français" "tr" "Türkçe") $code | default (upper $code) -}}
+{{- if ge hugo.Version "0.158.0" -}}
+  {{- with $l.Locale }}{{ $locale = . }}{{ end -}}
+  {{- with $l.Direction }}{{ $dir = . }}{{ end -}}
+  {{- with $l.Label }}{{ $label = . }}{{ end -}}
+{{- end -}}
+{{- return dict "locale" $locale "dir" $dir "label" $label -}}

@@ -28,8 +28,10 @@ Set in **Settings → Environment variables**, for both Production and Preview:
 `HUGO_VERSION` must match `.hugoversion`. When you bump one, bump the other — the
 test suite asserts the runbook and the pin agree.
 
-The theme uses the `locale` / `label` / `direction` language fields introduced in
-Hugo 0.158.0, so do not set a version below that.
+If `HUGO_VERSION` is missing, Cloudflare falls back to its own default Hugo, which is
+older than the pin. The theme still builds there (language fields from Hugo 0.158.0 are
+read through a version guard, see `tests/cases/70-theme-compat.sh`), but production
+should always build with the pinned version so it matches what the tests ran on.
 
 ## Before the first deploy
 

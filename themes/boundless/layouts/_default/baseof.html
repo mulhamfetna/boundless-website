@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="{{ site.Language.Locale | default site.Language.Lang }}" dir="{{ site.Language.Direction | default "ltr" }}">
+{{- $li := partial "lang-info.html" site.Language -}}
+<html lang="{{ $li.locale }}" dir="{{ $li.dir }}">
 <head>
 {{ partial "hooks/head-start.html" . }}
 {{ partial "head.html" . }}
