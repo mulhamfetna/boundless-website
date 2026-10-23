@@ -5,18 +5,18 @@ code: "SRC2"
 weight: 2
 status: "running"
 mark: "Camp 2"
-summary: "40 hours of training in 14 sessions, with Sanad Youth for Development and UNFPA Syria. The research fellowship starts soon."
-lead: "50 youth researchers and 40 hours of training in 14 sessions. Training is complete; the research fellowship starts soon."
+summary: "A free, in-person camp in Aleppo with Sanad Youth for Development, supported by UNFPA Syria. Research teams are now writing their papers."
+lead: "50 youth researchers and 40 hours of training in 14 sessions. The foundation stage is complete, research teams are drafting their papers, and the final stage (evaluation, peer-review simulation and submission) runs from October to December 2026."
 image: "images/src2-session-hammal.jpg"
 imageAlt: "Dr. Abdulrazzak Hammal leading a camp session"
 corner: "br"
 imagePos: "72% 50%"
 imageRatio: "4/3"
 facts:
-  - { label: "Training", value: "27 April – 27 July 2026" }
+  - { label: "Started", value: "April 2026" }
   - { label: "Location", value: "Aleppo · in person" }
   - { label: "Fee", value: "Free" }
-  - { label: "Research fellowship", value: "Starts soon" }
+  - { label: "Current stage", value: "Evaluation and submission" }
 stats:
   - { value: "50", label: "youth researchers, from 83 applicants" }
   - { value: "40", label: "hours of training" }
@@ -29,10 +29,12 @@ sessions:
   - { count: "2", title: "Data analytics and statistics for researchers", by: "Mazyat Kourani" }
   - { count: "3", title: "AI tools for researchers", by: "Eng. Mulham Fetna" }
   - { count: "3", title: "Professional personal branding, outreach and research portfolio platforms", by: "Eng. Mulham Fetna" }
+  - { count: "", title: "Community research track: linking research to the needs of Syrian society", by: "Nadera Rabie" }
 stepsTitle: "Camp stages"
 steps:
-  - { title: "Training", text: "40 hours in 14 sessions: applied research method, statistics, AI tools and the researcher's professional presence." }
-  - { title: "Research fellowship", text: "Research teams with academic supervision work towards publishable drafts. Starts soon." }
+  - { title: "Foundation · complete", text: "6 intensive sessions (18 hours) with Dr. Abdulrazzak Hammal: finding the research gap, the anatomy of a paper, journal rankings and predatory journals, submission systems and open access." }
+  - { title: "Applied methods and specialist tracks · Aug – Sep 2026", text: "A community research track and a data science track, while multidisciplinary teams start drafting their papers." }
+  - { title: "Evaluation and submission · Oct – Dec 2026", text: "Drafts are scored on the Boundless 24-point evaluation, go through a peer-review simulation, then final revisions and preparation for submission." }
 gallery:
   - { src: "images/src2-stage1-group.jpg", alt: "Camp participants with the trainers", caption: "Camp participants" }
 partners:
@@ -45,6 +47,16 @@ partners:
 - To be guided step by step from an idea to a published paper.
 - To get specialist academic supervision.
 - To build working relationships with a local and international research community.
+
+## After the camp: three fellowship tracks
+
+1. **Publishing support:** Boundless experts help trainees publish their completed research as co-authors.
+2. **Boundless research projects:** top performers join Boundless's own institutional research projects.
+3. **Research incubation:** we help people with original ideas find funding and supervision.
+
+## How we keep quality high
+
+We run a monitoring, evaluation, accountability and learning (MEAL) system: a pre- and post-assessment that trainees must pass to graduate, regular satisfaction surveys on content, trainers and logistics, and an independent channel for suggestions and complaints.
 
 ## Who it is for
 
