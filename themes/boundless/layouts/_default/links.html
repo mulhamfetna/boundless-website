@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="links-page"><div class="wrap">
+  <div class="links-card">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.lead }}<p class="lead">{{ . }}</p>{{ end }}
+    <ul class="link-list">
+      {{ range .Params.items }}
+      <li><a class="link-row{{ if .primary }} primary{{ end }}" href="{{ .url }}"{{ if not (hasPrefix .url "/") }} target="_blank" rel="noopener"{{ end }}>
+        <span class="link-name">{{ .name }}</span>
+        <span class="link-sub ltr">{{ .sub }}</span>
+      </a></li>
+      {{ end }}
+    </ul>
+  </div>
+</div></section>
+{{ end }}
