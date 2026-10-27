@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="links-page kit-page"><div class="wrap">
+  <div class="links-card kit-card">
+    {{ with .Params.eyebrow }}<p class="kit-eyebrow">{{ . }}</p>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.lead }}<p class="lead">{{ . }}</p>{{ end }}
+
+    {{ range .Params.groups }}
+    <h2 class="kit-h">{{ .title }}</h2>
+    {{ with .note }}<p class="kit-note">{{ . }}</p>{{ end }}
+    <ul class="link-list">
+      {{ range .items }}
+      {{ $external := not (hasPrefix .url "/") }}
+      <li><a class="link-row{{ if .primary }} primary{{ end }}" href="{{ .url }}"{{ if .download }} download{{ end }}{{ if and $external (not (hasPrefix .url "mailto:")) }} target="_blank" rel="noopener"{{ end }}>
+        <span class="link-name">{{ .name }}</span>
+        <span class="link-sub{{ if .ltr }} ltr{{ end }}">{{ .sub }}</span>
+      </a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+
+    {{ with .Params.badges }}
+    <h2 class="kit-h">{{ .title }}</h2>
+    <p class="kit-note">{{ .note }}</p>
+    <ul class="kit-badges">
+      {{ range .items }}
+      <li><a href="{{ .url }}" download><img src="{{ .url }}" alt="{{ .alt }}" width="1080" height="1080" loading="lazy"><span>{{ .name }}</span></a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+
+    {{ with .Params.privacy }}<p class="kit-note kit-privacy">{{ . }}</p>{{ end }}
+    {{ with .Params.attribution }}<p class="kit-attr">{{ . }}</p>{{ end }}
+    <p class="kit-tags ltr">#GEW2026 #GEWSyria #StartupSyria #EntrepreneursThriveHere</p>
+  </div>
+</div></section>
+{{ end }}

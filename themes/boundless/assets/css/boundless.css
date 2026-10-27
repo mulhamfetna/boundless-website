@@ -194,3 +194,15 @@ a.card:hover{border-color:var(--bl-text-accent)}
 .link-row.primary{background:var(--bl-color-teal);border-color:var(--bl-color-teal);color:var(--bl-color-white)}
 .link-name{font-weight:700;font-size:20px}
 .link-sub{font-size:15px;opacity:.8;align-self:flex-start}
+/* PB101 after-camp kit page (QR target on the GEW slides) */
+.kit-card{max-width:680px}
+.kit-eyebrow{margin:0;font-weight:700;font-size:16px;color:var(--bl-text-accent)}
+.kit-h{margin:24px 0 0;font-size:24px}
+.kit-note{margin:0;font-size:16px;line-height:1.7;color:var(--bl-text-muted)}
+.kit-badges{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.kit-badges a{display:flex;flex-direction:column;gap:6px;color:var(--bl-text);text-decoration:none;font-weight:700;font-size:15px}
+.kit-badges img{width:100%;height:auto;border-radius:var(--bl-radius-card)}
+.kit-privacy{margin-top:16px}
+.kit-attr{margin:8px 0 0;font-size:15px;line-height:1.7;color:var(--bl-text-muted)}
+.kit-tags{margin:0;font-size:14px;font-weight:700;color:var(--bl-text-accent)}
+@media (min-width:700px){.kit-badges{grid-template-columns:repeat(4,minmax(0,1fr))}}
