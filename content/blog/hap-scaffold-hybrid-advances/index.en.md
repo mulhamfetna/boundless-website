@@ -63,12 +63,12 @@ This research is one hundred percent Syrian, and this team is a model of what yo
 
 ## Team members and their fields
 
-- Abdulrazzaq Hammal – Dept. of Basic Science (Chemistry), Faculty of Electrical Engineering, University of Aleppo
+- Abdulrazzaq Hammal – Dept. of Basic Science — Chemistry, Faculty of Electrical Engineering, University of Aleppo
 - Hiba Al-Hamed Al-Duihib – Dept. of Microbiology, Faculty of Pharmacy, Hama University
 - Asmaa Hamad – Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo
 - Ola Alaa Hamad – Dept. of Biotechnology Engineering, Faculty of Technical Engineering, University of Aleppo
 - Eman Mouselly – Dept. of Applied Chemistry, Faculty of Science, University of Aleppo
-- Bahia Sheikh Alkassabeen – Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo
+- Bahia Sheikh Alkassabeen – Dept. of Environmental Engineering, Faculty of Technical Engineering, University of Aleppo
 - Hasan Ibesh – Faculty of Human Medicine, University of Aleppo
 - Haifaa Ajam – Dept. of Biotechnology Engineering, Faculty of Technical Engineering, University of Aleppo
 - Sara Shawwah – Faculty of Human Medicine, University of Aleppo
@@ -79,13 +79,13 @@ This research is one hundred percent Syrian, and this team is a model of what yo
 - Adnan Masry – Dept. of Mechanical Energy Engineering, Faculty of Mechanical Engineering, University of Aleppo
 - Fathia Boudakah – Dept. of Biotechnology Engineering, Faculty of Technical Engineering, University of Aleppo
 - Lana Kalaji – Faculty of Pharmacy, University of Aleppo
-- Leen Almaha Hafez – Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo
+- Leen Almaha Hafez – Dept. of Environmental Engineering, Faculty of Technical Engineering, University of Aleppo
 - Leen Samara – Faculty of Human Medicine, University of Aleppo
 - Majed Almohamad – Faculty of Agriculture, University of Aleppo
 - Malak Alsadr – Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo
 - Mohamad Khayat – Dept. of Applied Chemistry, Faculty of Science, University of Aleppo
-- Muhammad Kassir – Dept. of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo
+- Muhammad Kassir – Faculty of Mechanical Engineering, University of Aleppo
 - Mohamad Manafikhi – Faculty of Pharmacy, University of Aleppo
-- Mohammad Moneer Salahieh – Dept. of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo
+- Mohammad Moneer Salahieh – Faculty of Mechanical Engineering, University of Aleppo
 - Mulham Fetna – Dept. of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo
 - Mais Markabi – Faculty of Pharmacy, University of Aleppo
