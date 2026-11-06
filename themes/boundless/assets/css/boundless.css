@@ -56,7 +56,6 @@ h3{font-size:clamp(24px,2.4vw,30px);font-family:var(--bl-font-sans);font-weight:
 .framed .photo>img{width:100%;height:100%;object-fit:cover;display:block}
 .framed .fr{position:absolute;width:var(--bl-frame-size,42%);aspect-ratio:1/1;border:var(--bl-frame-stroke) solid var(--bl-color-sky);border-radius:var(--bl-radius-frame);pointer-events:none}
 .framed>.fr{z-index:0}
-.framed .photo .fr{border-color:var(--bl-color-ink);z-index:2}
 .framed[data-corner=bl] .fr{left:calc(var(--bl-frame-offset,36px) * -1);bottom:calc(var(--bl-frame-offset,36px) * -1)}
 .framed[data-corner=br] .fr{right:calc(var(--bl-frame-offset,36px) * -1);bottom:calc(var(--bl-frame-offset,36px) * -1)}
 .framed[data-corner=tl] .fr{left:calc(var(--bl-frame-offset,36px) * -1);top:calc(var(--bl-frame-offset,36px) * -1)}

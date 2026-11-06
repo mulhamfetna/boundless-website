@@ -38,4 +38,10 @@ for f in "$CSS"/*.css $(find "$OUT" -name '*.css' 2>/dev/null); do
 done
 assert_equals "no @import in source or built stylesheets" "0" "$dead_import"
 
+# Brand rule (2026-11-06): the Sky frame sits behind the photo; nothing is drawn over the picture.
+assert_equals "the photo-frame partial draws one frame, outside the photo" "1" \
+  "$(grep -c 'class="fr"' themes/boundless/layouts/partials/framed.html)"
+assert_equals "no frame style is layered over the photo" "0" \
+  "$(grep -c '\.photo \.fr' "$CSS/boundless.css")"
+
 finish

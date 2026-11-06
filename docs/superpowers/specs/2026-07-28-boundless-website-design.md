@@ -244,6 +244,15 @@ Not blocking, but needed before the phase they belong to:
 
 Changes to the decisions in §3, newest first. The original rows stay above as the record of what was decided at the time.
 
+### 2026-11-06 — Photo-frame device: frame behind the photo; blog section
+
+Decided by Mulham Fetna.
+
+| # | Was | Now |
+|---|---|---|
+| Identity | The Sky frame crosses one corner of each main photo, and the part over the photo turns ink | **The Sky frame sits behind the photo** and shows only where it extends past one corner. Nothing is drawn over the picture. Applied in `partials/framed.html` and the Boundless Design System. |
+| §5 | No news section | **Blog section** at `/blog/` and `/en/blog/` (posts are page bundles; published papers live in `data/papers/`). |
+
 ### 2026-10-23 — Visual identity applied, custom theme, Arabic primary
 
 Decided by Mulham Fetna.
