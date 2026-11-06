@@ -45,8 +45,8 @@
     {{- with .keywords }}<h3>Keywords</h3><ul class="chips">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
 
     <h3>Authors (as published)</h3>
-    <ol class="authors">{{ range .authors }}<li><b>{{ .name }}{{ if .corresponding }}*{{ end }}</b><span>{{ .aff }}</span></li>{{ end }}</ol>
-    <p class="paper-cite">* Corresponding author.</p>
+    <ol class="authors">{{ range .authors }}<li>{{ .name }}{{ if .corresponding }}*{{ end }}</li>{{ end }}</ol>
+    <p class="paper-cite">* Corresponding author. Affiliations are listed in <a href="https://doi.org/{{ .doi }}" rel="noopener">the paper</a>.</p>
 
     <h3>How to cite</h3>
     {{- $first := index .authors 0 }}{{ $fam := index (last 1 (split $first.name " ")) 0 }}

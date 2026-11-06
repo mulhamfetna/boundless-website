@@ -213,15 +213,14 @@ a.card:hover{border-color:var(--bl-text-accent)}
 .paper h3{margin:18px 0 0;font-size:22px}
 .paper-title{margin:0;font-family:var(--bl-font-display);font-weight:900;font-size:clamp(24px,2.6vw,32px);line-height:1.3}
 .paper-cite{margin:0;color:var(--bl-text-muted);font-size:17px}
+.paper-cite a{color:var(--bl-text-accent)}
 .paper .facts a{color:var(--bl-text-accent);word-break:break-all}
 .abstract p{margin:0 0 .9em;font-size:17px;line-height:1.75;color:var(--bl-text-secondary)}
 .abstract b{color:var(--bl-text)}
 .chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .chips li{background:var(--bl-tag-bg);color:var(--bl-text-accent);font-size:15px;font-weight:700;padding:6px 14px;border-radius:var(--bl-radius-tag)}
-.authors{margin:0;padding-inline-start:1.6em;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 28px;font-size:15px}
+.authors{margin:0;padding-inline-start:1.6em;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 28px;font-size:16px}
 .authors li::marker{color:var(--bl-text-accent);font-weight:700}
-.authors b{display:block;font-size:16px}
-.authors span{color:var(--bl-text-muted);line-height:1.5}
 .cite{margin:0;font-size:15px;line-height:1.7;color:var(--bl-text-secondary);overflow-wrap:anywhere}
 .faq{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
 .faq-item{border-top:6px solid var(--bl-color-sky);padding-top:18px}

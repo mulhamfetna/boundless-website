@@ -25,7 +25,7 @@
 {{- $graph := slice $org -}}
 {{- with $p.paper }}{{ with partial "paper-data.html" . -}}
   {{- $authors := slice -}}
-  {{- range .authors }}{{ $authors = $authors | append (dict "@type" "Person" "name" .name "affiliation" (dict "@type" "Organization" "name" .aff)) }}{{ end -}}
+  {{- range .authors }}{{ $authors = $authors | append (dict "@type" "Person" "name" .name) }}{{ end -}}
   {{- $abs := slice -}}{{ range .abstract }}{{ $abs = $abs | append (printf "%s: %s" .h (.t | plainify | htmlUnescape)) }}{{ end -}}
   {{- $art := dict
     "@type" "ScholarlyArticle"
