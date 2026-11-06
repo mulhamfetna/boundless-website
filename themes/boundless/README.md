@@ -58,7 +58,7 @@ Posts live in `content/blog/<slug>/index.{ar,en}.md` (page bundles, paired by `t
 | `seoTitle` | Shorter `<title>` for search results; the headline stays on the page |
 | `date`, `tags` | Publication date (Levantine month names in Arabic) and tag pills |
 | `stats` | Big numbers on the Ink band |
-| `paper` | Name of a record in `data/papers/`: adds the published-paper block (DOI, licence, abstract, keywords, author names in published order, how to cite) and ScholarlyArticle structured data |
+| `paper` | Name of a record in `data/papers/`: adds the published-paper block (DOI, licence, abstract, keywords, authors with departments, how to cite) and ScholarlyArticle structured data |
 | `faq` | `q`/`a` pairs shown on the page and emitted as FAQPage structured data. Answers may use `<bdi>` around English inside Arabic |
 | `project` | A project slug (`src1`): adds a related-project card |
 | `corner`, `imageRatio`, `imagePos` | Frame corner (default `bl`), cover aspect ratio (default `3/4`) and CSS object-position (default `top`) |

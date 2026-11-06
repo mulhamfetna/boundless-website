@@ -219,7 +219,9 @@ a.card:hover{border-color:var(--bl-text-accent)}
 .abstract b{color:var(--bl-text)}
 .chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .chips li{background:var(--bl-tag-bg);color:var(--bl-text-accent);font-size:15px;font-weight:700;padding:6px 14px;border-radius:var(--bl-radius-tag)}
-.authors{margin:0;padding-inline-start:1.6em;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 28px;font-size:16px}
+.authors{margin:0;padding-inline-start:1.6em;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 28px;font-size:15px}
+.authors b{display:block;font-size:16px}
+.authors span{color:var(--bl-text-muted);line-height:1.5}
 .authors li::marker{color:var(--bl-text-accent);font-weight:700}
 .cite{margin:0;font-size:15px;line-height:1.7;color:var(--bl-text-secondary);overflow-wrap:anywhere}
 .faq{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}

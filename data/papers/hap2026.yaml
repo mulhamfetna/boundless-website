@@ -2,11 +2,8 @@
 # Source of truth: the version of record PDF (Hybrid Advances 13 (2026) 100657, issue version of
 # 16 June 2026), checked 2026-11-06. It supersedes the OpenAlex record, which carried an earlier
 # affiliation (k) for Kassir, Salahieh and Fetna.
-# Author names, order and affiliations are copied exactly as published. Do not edit them
-# to match the blog post. The post's team list follows the team's confirmed departments
-# (2026-11-06), which differ from the journal for Kassir, Salahieh (Faculty of Mechanical
-# Engineering), Hafez and Sheikh Alkassabeen (Faculty of Technical Engineering). This file
-# must match the journal.
+# Author names and order are as published. Affiliations are the team's confirmed final
+# departments (2026-11-06) and are what the site shows.
 # The abstract is reproduced verbatim under the article's CC BY-NC-ND 4.0 licence, so it is
 # not corrected here even where the published text has typos.
 
@@ -47,9 +44,9 @@ abstract:
   - h: "Conclusion"
     t: "The designed Mg/Si/Zn-HAp nanomaterial successfully integrates multi-step osteogenic stimulation, infection resistance, and manufacturability into a smart, responsive scaffold. This integrated approach presents a promising strategy for developing next-generation biomaterials to treat severe and infected bone defects more effectively and safely."
 
-# Published order. aff = affiliation exactly as published.
+# Published author order. aff = confirmed department and faculty.
 authors:
-  - { name: "Abdulrazzaq Hammal", corresponding: true, aff: "Dept. of Basic Science-Chemistry, Faculty of Electrical Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Abdulrazzaq Hammal", corresponding: true, aff: "Dept. of Basic Science — Chemistry, Faculty of Electrical Engineering, University of Aleppo, Aleppo, Syria" }
   - { name: "Hiba Al-Hamed Al-Duihib", aff: "Dept. of Microbiology, Faculty of Pharmacy, Hama University, Hama, Syria" }
   - { name: "Sara Shawwah", aff: "Faculty of Human Medicine, University of Aleppo, Aleppo, Syria" }
   - { name: "Adeela Kanawati", aff: "Dept. of Biochemistry, Faculty of Science, University of Aleppo, Aleppo, Syria" }
@@ -64,14 +61,14 @@ authors:
   - { name: "Leen Samara", aff: "Faculty of Human Medicine, University of Aleppo, Aleppo, Syria" }
   - { name: "Majed Almohamad", aff: "Faculty of Agriculture, University of Aleppo, Aleppo, Syria" }
   - { name: "Mohamad Manafikhi", aff: "Faculty of Pharmacy, University of Aleppo, Aleppo, Syria" }
-  - { name: "Muhammad Kassir", aff: "Department of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Muhammad Kassir", aff: "Faculty of Mechanical Engineering, University of Aleppo, Aleppo, Syria" }
   - { name: "Sedra Olabi", aff: "Dept. of Biotechnology Engineering, Faculty of Technical Engineering, University of Aleppo, Aleppo, Syria" }
-  - { name: "Mohammad Moneer Salahieh", aff: "Department of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Mohammad Moneer Salahieh", aff: "Faculty of Mechanical Engineering, University of Aleppo, Aleppo, Syria" }
   - { name: "Eman Mouselly", aff: "Dept. of Applied Chemistry, Faculty of Science, University of Aleppo, Aleppo, Syria" }
   - { name: "Mais Markabi", aff: "Faculty of Pharmacy, University of Aleppo, Aleppo, Syria" }
-  - { name: "Leen Almaha Hafez", aff: "Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Leen Almaha Hafez", aff: "Dept. of Environmental Engineering, Faculty of Technical Engineering, University of Aleppo, Aleppo, Syria" }
   - { name: "Sana Karkar", aff: "Faculty of Pharmacy, University of Aleppo, Aleppo, Syria" }
   - { name: "Sedra Batal", aff: "Faculty of Nursing, University of Aleppo, Aleppo, Syria" }
-  - { name: "Mulham Fetna", aff: "Department of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo, Aleppo, Syria" }
-  - { name: "Bahia Sheikh Alkassabeen", aff: "Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Mulham Fetna", aff: "Dept. of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Bahia Sheikh Alkassabeen", aff: "Dept. of Environmental Engineering, Faculty of Technical Engineering, University of Aleppo, Aleppo, Syria" }
   - { name: "Ola Alaa Hamad", aff: "Dept. of Biotechnology Engineering, Faculty of Technical Engineering, University of Aleppo, Aleppo, Syria" }
