@@ -33,4 +33,16 @@ done
 assert_file_contains "Arabic post uses the brand spelling of the founder's name" "$OUT/$POST" "ملهم فتنة"
 assert_file_not_contains "Arabic post has no old spelling of the founder's name" "$OUT/$POST" "ملهم فتنه"
 
+# Second post: SRC2 training graduation.
+P2="blog/src2-training-graduation/index.html"
+for d in "" "en/"; do
+  f="$OUT/${d}$P2"
+  assert_file_exists "${d:-ar/} SRC2 graduation post" "$f"
+  assert_file_contains "${d:-ar/} SRC2 post carries BlogPosting data" "$f" '"@type":"BlogPosting"'
+  assert_file_contains "${d:-ar/} SRC2 post has a cover image" "$f" 'src2-training-graduation/cover.jpg'
+done
+assert_file_contains "SRC2 post names UNFPA as funder (Arabic)" "$OUT/$P2" "صندوق الأمم المتحدة للسكان"
+assert_file_not_contains "SRC2 post does not name UNDP as funder" "$OUT/$P2" "الإنمائي"
+assert_file_contains "English SRC2 post names UNFPA" "$OUT/en/$P2" "UNFPA Syria"
+
 finish
