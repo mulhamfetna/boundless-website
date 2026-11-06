@@ -1,0 +1,61 @@
+{{- /*
+  Structured data for a blog post (SEO / GEO / AEO).
+  Emits one JSON-LD graph: the BlogPosting, the ScholarlyArticle it is about (when the
+  post names a paper in data/papers/), and a FAQPage built from the post's `faq` list.
+  Context: the Page.
+*/ -}}
+{{- $p := .Params -}}
+{{- $org := dict "@type" "EducationalOrganization" "@id" (printf "%s#org" site.Home.Permalink) "name" site.Title "url" site.Home.Permalink "logo" ("brand/boundless-symbol-full.svg" | absURL) -}}
+{{- $img := site.Params.ogImage | absURL -}}{{ with .Resources.GetMatch "cover.*" }}{{ $img = .Permalink }}{{ end -}}
+{{- $post := dict
+  "@type" "BlogPosting"
+  "@id" (printf "%s#post" .Permalink)
+  "headline" .Title
+  "description" (.Description | default "")
+  "inLanguage" .Lang
+  "url" .Permalink
+  "mainEntityOfPage" .Permalink
+  "datePublished" (.Date.Format "2006-01-02")
+  "dateModified" (.Lastmod.Format "2006-01-02")
+  "image" $img
+  "author" (dict "@id" (printf "%s#org" site.Home.Permalink))
+  "publisher" (dict "@id" (printf "%s#org" site.Home.Permalink))
+-}}
+{{- with $p.tags }}{{ $post = merge $post (dict "keywords" (delimit . ", ")) }}{{ end -}}
+{{- $graph := slice $org -}}
+{{- with $p.paper }}{{ with partial "paper-data.html" . -}}
+  {{- $authors := slice -}}
+  {{- range .authors }}{{ $authors = $authors | append (dict "@type" "Person" "name" .name "affiliation" (dict "@type" "Organization" "name" .aff)) }}{{ end -}}
+  {{- $abs := slice -}}{{ range .abstract }}{{ $abs = $abs | append (printf "%s: %s" .h (.t | plainify | htmlUnescape)) }}{{ end -}}
+  {{- $art := dict
+    "@type" "ScholarlyArticle"
+    "@id" (printf "https://doi.org/%s" .doi)
+    "headline" .title
+    "name" .title
+    "url" (printf "https://doi.org/%s" .doi)
+    "sameAs" (slice .url)
+    "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .doi)
+    "datePublished" .datePublished
+    "inLanguage" "en"
+    "isAccessibleForFree" true
+    "license" .licenseUrl
+    "keywords" (delimit .keywords ", ")
+    "abstract" (delimit $abs " ")
+    "author" $authors
+    "isPartOf" (dict "@type" "PublicationVolume" "volumeNumber" .volume "isPartOf" (dict "@type" "Periodical" "name" .journal "issn" .issn "publisher" (dict "@type" "Organization" "name" .publisher)))
+  -}}
+  {{- $post = merge $post (dict "about" (dict "@id" (printf "https://doi.org/%s" .doi)) "citation" (dict "@id" (printf "https://doi.org/%s" .doi))) -}}
+  {{- $graph = $graph | append $art -}}
+{{- end }}{{ end -}}
+{{- $graph = $graph | append $post -}}
+{{- with $p.faq -}}
+  {{- $qs := slice -}}
+  {{- range . }}{{ $qs = $qs | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" (.a | plainify | htmlUnescape))) }}{{ end -}}
+  {{- $graph = $graph | append (dict "@type" "FAQPage" "@id" (printf "%s#faq" $.Permalink) "inLanguage" $.Lang "mainEntity" $qs) -}}
+{{- end }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- range $p.tags }}<meta property="article:tag" content="{{ . }}">{{ end }}
+<script type="application/ld+json">
+{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify | safeJS }}
+</script>

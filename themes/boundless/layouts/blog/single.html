@@ -1,0 +1,76 @@
+{{ define "main" }}
+{{- $p := .Params -}}
+{{- $paper := dict -}}{{ with $p.paper }}{{ $paper = partial "paper-data.html" . }}{{ end -}}
+{{- $cover := "" -}}{{ with .Resources.GetMatch "cover.*" }}{{ $cover = .RelPermalink }}{{ end -}}
+<article>
+<section class="p-hero"><div class="wrap"{{ if not $cover }} style="grid-template-columns:1fr"{{ end }}>
+  <div class="txt">
+    <div class="meta">{{ range $p.tags }}<span class="tag">{{ . }}</span>{{ end }}</div>
+    <h1>{{ partial "title.html" . }}</h1>
+    {{- with $p.lead | default .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    <ul class="facts">
+      <li><span>{{ i18n "postDate" }}</span>{{ partial "post-date.html" . }}</li>
+      {{- with $paper }}
+      <li><span>{{ i18n "journal" }}</span><bdi>{{ .journal }}</bdi></li>
+      <li><span>DOI</span><a class="ltr" href="https://doi.org/{{ .doi }}" rel="noopener">{{ .doi }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- with $cover }}{{ partial "framed.html" (dict "img" . "alt" $p.imageAlt "corner" ($p.corner | default "bl") "eager" true "ar" ($p.imageRatio | default "3/4") "pos" ($p.imagePos | default "top")) }}{{ end }}
+</div></section>
+
+{{- with $p.stats }}
+<section class="band-ink"><div class="wrap">
+  <div class="stats">{{ range . }}<div class="stat"><b>{{ .value }}</b><span>{{ .label }}</span></div>{{ end }}</div>
+</div></section>
+{{- end }}
+
+<section><div class="wrap"><div class="prose">{{ .Content }}</div></div></section>
+
+{{- with $paper }}
+<section class="paper-sec" aria-labelledby="paper-h"><div class="wrap">
+  <div class="sec-head"><h2 id="paper-h">{{ i18n "thePaper" }}</h2><p>{{ i18n "paperNote" }}</p></div>
+  <div class="paper" lang="en" dir="ltr">
+    <p class="paper-title">{{ .title }}</p>
+    <p class="paper-cite"><i>{{ .journal }}</i>, vol. {{ .volume }}, art. {{ .article }} ({{ .issueDate }}). {{ .publisher }}. Published online {{ time.Format "2 January 2006" .datePublished }}.</p>
+    <ul class="facts">
+      <li><span>DOI</span><a href="https://doi.org/{{ .doi }}" rel="noopener">{{ .doi }}</a></li>
+      <li><span>ISSN</span>{{ .issn }}</li>
+      <li><span>Licence</span><a href="{{ .licenseUrl }}" rel="noopener license">{{ .license }}</a> (open access)</li>
+    </ul>
+    <div class="pills"><a class="pill sun" href="https://doi.org/{{ .doi }}" rel="noopener">{{ i18n "readPaper" }}</a></div>
+
+    <h3>Abstract</h3>
+    <div class="abstract">{{ range .abstract }}<p><b>{{ .h }}.</b> {{ .t | safeHTML }}</p>{{ end }}</div>
+    {{- with .keywords }}<h3>Keywords</h3><ul class="chips">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+
+    <h3>Authors (as published)</h3>
+    <ol class="authors">{{ range .authors }}<li><b>{{ .name }}{{ if .corresponding }}*{{ end }}</b><span>{{ .aff }}</span></li>{{ end }}</ol>
+    <p class="paper-cite">* Corresponding author.</p>
+
+    <h3>How to cite</h3>
+    {{- $first := index .authors 0 }}{{ $fam := index (last 1 (split $first.name " ")) 0 }}
+    <p class="cite">{{ $fam }}, {{ substr $first.name 0 1 }}., et al. ({{ .year }}). {{ .title }}. <i>{{ .journal }}</i>, <i>{{ .volume }}</i>, {{ .article }}. https://doi.org/{{ .doi }}</p>
+  </div>
+</div></section>
+{{- end }}
+
+{{- with $p.faq }}
+<section class="faq-sec" aria-labelledby="faq-h"><div class="wrap">
+  <div class="sec-head"><h2 id="faq-h">{{ i18n "faq" }}</h2></div>
+  <div class="faq">{{ range . }}<div class="faq-item"><h3>{{ .q }}</h3><p>{{ .a | safeHTML }}</p></div>{{ end }}</div>
+</div></section>
+{{- end }}
+
+{{- with $p.project }}{{ with site.GetPage (printf "/projects/%s" .) }}
+<section style="padding-top:0"><div class="wrap">
+  <div class="sec-head"><h2>{{ i18n "relatedProject" }}</h2></div>
+  <a class="card related" href="{{ .RelPermalink }}">
+    <div class="meta">{{ with .Params.code }}<span class="tag ltr">{{ . }}</span>{{ end }}{{ with .Params.status }}<span class="tag">{{ i18n (printf "status_%s" .) }}</span>{{ end }}</div>
+    <b>{{ .Title }}</b>{{ with .Params.summary | default .Description }}<p>{{ . }}</p>{{ end }}
+    <span class="more">{{ i18n "readMore" }} {{ i18n "arrow" }}</span>
+  </a>
+</div></section>
+{{- end }}{{ end }}
+</article>
+{{ end }}

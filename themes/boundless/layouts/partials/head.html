@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {{- $title := cond .IsHome (site.Params.homeTitle | default site.Title) (printf "%s · %s" .Title site.Title) }}
+{{- with .Params.seoTitle }}{{ $title = printf "%s · %s" . site.Title }}{{ end }}
 <title>{{ $title }}</title>
 {{- $desc := .Description | default site.Params.description }}
 <meta name="description" content="{{ $desc }}">
@@ -8,6 +9,7 @@
 <meta name="theme-color" content="#F5F8F9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0A2F3D" media="(prefers-color-scheme: dark)">
 {{- $img := site.Params.ogImage }}{{ with .Params.image }}{{ $img = . }}{{ end }}
+{{- if .IsPage }}{{ with .Resources.GetMatch "cover.*" }}{{ $img = .Permalink }}{{ end }}{{ end }}
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $desc }}">
@@ -32,4 +34,5 @@
 {{ $o | jsonify | safeJS }}
 </script>
 {{- end }}
+{{- if and .IsPage (eq .Section "blog") }}{{ partial "schema-post.html" . }}{{ end }}
 {{- partial "head-extra.html" . }}

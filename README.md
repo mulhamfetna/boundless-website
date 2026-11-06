@@ -42,6 +42,8 @@ Pages pair by file name (`src2.ar.md` / `src2.en.md`) plus a shared `translation
 | `content/_index.{ar,en}.md` | Home page blocks: hero, stats, projects, band, partners |
 | `content/projects/*.{ar,en}.md` | One pair per project: SRC1, SRC2, GEW |
 | `content/about.{ar,en}.md` | About page |
+| `content/blog/` | Blog section; one folder per post (see the theme README) |
+| `data/papers/` | Published-paper records used by blog posts (copied from the journal, not edited) |
 | `config/_default/` | Site, language, menu and contact settings |
 | `static/images/` | Photos and the social sharing image |
 

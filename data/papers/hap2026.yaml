@@ -1,0 +1,74 @@
+# Published record of the SRC1 fellowship paper.
+# Source of truth: the version of record PDF (Hybrid Advances 13 (2026) 100657, issue version of
+# 16 June 2026), checked 2026-11-06. It supersedes the OpenAlex record, which carried an earlier
+# affiliation (k) for Kassir, Salahieh and Fetna.
+# Author names, order and affiliations are copied exactly as published. Do not edit them
+# to match the blog post: the post may use Arabic spellings; this file must match the journal.
+# The abstract is reproduced verbatim under the article's CC BY-NC-ND 4.0 licence, so it is
+# not corrected here even where the published text has typos.
+
+title: "Design and evaluation of triple-doped nano-hydroxyapatite (Mg/Si/Zn-HAP) as multi-step intelligent scaffold for bone healing"
+journal: "Hybrid Advances"
+publisher: "Elsevier"
+issn: "2773-207X"
+volume: "13"
+article: "100657"
+year: "2026"
+datePublished: "2026-04-03"   # available online
+received: "2026-01-22"
+accepted: "2026-04-02"
+issueDate: "June 2026"
+doi: "10.1016/j.hybadv.2026.100657"
+url: "https://www.sciencedirect.com/science/article/pii/S2773207X2600059X"
+license: "CC BY-NC-ND 4.0"
+licenseUrl: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+keywords:
+  - "Hydroxyapatite"
+  - "Multi-ion doping"
+  - "Smart ion release"
+  - "Biocompatibility"
+  - "Antimicrobial effect"
+  - "3D bone scaffold"
+  - "Nanobiomaterials"
+  - "Bone tissue engineering"
+
+abstract:
+  - h: "Introduction/objective"
+    t: "Severe bone defects remain a significant clinical challenge due to the limitations of traditional biomaterials. The aim of this study is to design and synthesize a novel triple-doped nano-hydroxyapatite (Mg/Si/Zn-HAP) with a specific formula to act as a multi-stage intelligent scaffold, mimicking the complex time-dependent sequence of natural bone healing."
+  - h: "Methods"
+    t: "Mg/Si/Zn-HAp (target formula Ca<sub>9.70</sub>Mg<sub>0.20</sub>Zn<sub>0.10</sub>(SiO<sub>4</sub>)<sub>0.20</sub>(PO<sub>4</sub>)<sub>5.70</sub>(OH)<sub>0</sub>) was synthesized and precipitated via the control method. The material was characterized using XRD, FT-IR and AFM. Ion release kinetics (Ca<sup>2+</sup>, Mg<sup>2+</sup>, Zn<sup>2+</sup>, Si<sup>4+</sup>) were studied in simulated body fluid (SBF) over 28 days including the effect of pH (5.5-8.0). Biocompatibility was evaluated via MTT assay on MG-63 osteoblastic cells, and S. Antimicrobial efficacy was tested against E. aureus and E. coli. A prototype 3D porous scaffold was prepared and its mechanical properties were evaluated."
+  - h: "Results"
+    t: "XRD and FT-IR confirmed a pure, nano-sized (≈17 nm) hydroxyapatite phase with successful multi-ion replacement. The material showed a sustained, biphasic ion release profile in SBF. A pH-responsive “smart release” was observed, where zinc release increased by 37.5% in an acidic environment (pH 5.5) compared to physiological pH. The material showed excellent biocompatibility (cell viability >95% at ≤1 mg/ml) with 35% higher IC50 (3.8 ± 0.2 mg/ml) than pure HAp. This S. showed significant antimicrobial activity against E. aureus and E. coli with MIC values of 1.5 mg/mL and 2.0 mg/mL, respectively. The fabricated 3D scaffold had an interconnected porous structure (65 ± 3% porosity) and a compressive strength of 18 ± 2 MPa."
+  - h: "Discussion"
+    t: "The triple-doping strategy (Mg, Si, Zn) provides a synergistic effect, which leads to non-linear improvement of the material properties. Controlled, pH-sensitive ion release, particularly enhanced Zn<sup>2+</sup> release under acidic conditions, provides the potential for intrinsic antimicrobial protection during the inflammatory phase, followed by sustained release of osteogenic ions (Mg, Si) to support subsequent healing phases."
+  - h: "Conclusion"
+    t: "The designed Mg/Si/Zn-HAp nanomaterial successfully integrates multi-step osteogenic stimulation, infection resistance, and manufacturability into a smart, responsive scaffold. This integrated approach presents a promising strategy for developing next-generation biomaterials to treat severe and infected bone defects more effectively and safely."
+
+# Published order. aff = affiliation exactly as published.
+authors:
+  - { name: "Abdulrazzaq Hammal", corresponding: true, aff: "Dept. of Basic Science-Chemistry, Faculty of Electrical Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Hiba Al-Hamed Al-Duihib", aff: "Dept. of Microbiology, Faculty of Pharmacy, Hama University, Hama, Syria" }
+  - { name: "Sara Shawwah", aff: "Faculty of Human Medicine, University of Aleppo, Aleppo, Syria" }
+  - { name: "Adeela Kanawati", aff: "Dept. of Biochemistry, Faculty of Science, University of Aleppo, Aleppo, Syria" }
+  - { name: "Fathia Boudakah", aff: "Dept. of Biotechnology Engineering, Faculty of Technical Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Mohamad Khayat", aff: "Dept. of Applied Chemistry, Faculty of Science, University of Aleppo, Aleppo, Syria" }
+  - { name: "Adnan Masry", aff: "Dept. of Mechanical Energy Engineering, Faculty of Mechanical Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Asmaa Hamad", aff: "Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Malak Alsadr", aff: "Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Haifaa Ajam", aff: "Dept. of Biotechnology Engineering, Faculty of Technical Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Hasan Ibesh", aff: "Faculty of Human Medicine, University of Aleppo, Aleppo, Syria" }
+  - { name: "Lana Kalaji", aff: "Faculty of Pharmacy, University of Aleppo, Aleppo, Syria" }
+  - { name: "Leen Samara", aff: "Faculty of Human Medicine, University of Aleppo, Aleppo, Syria" }
+  - { name: "Majed Almohamad", aff: "Faculty of Agriculture, University of Aleppo, Aleppo, Syria" }
+  - { name: "Mohamad Manafikhi", aff: "Faculty of Pharmacy, University of Aleppo, Aleppo, Syria" }
+  - { name: "Muhammad Kassir", aff: "Department of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Sedra Olabi", aff: "Dept. of Biotechnology Engineering, Faculty of Technical Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Mohammad Moneer Salahieh", aff: "Department of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Eman Mouselly", aff: "Dept. of Applied Chemistry, Faculty of Science, University of Aleppo, Aleppo, Syria" }
+  - { name: "Mais Markabi", aff: "Faculty of Pharmacy, University of Aleppo, Aleppo, Syria" }
+  - { name: "Leen Almaha Hafez", aff: "Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Sana Karkar", aff: "Faculty of Pharmacy, University of Aleppo, Aleppo, Syria" }
+  - { name: "Sedra Batal", aff: "Faculty of Nursing, University of Aleppo, Aleppo, Syria" }
+  - { name: "Mulham Fetna", aff: "Department of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Bahia Sheikh Alkassabeen", aff: "Dept. of Environmental Engineering, Faculty of Civil Engineering, University of Aleppo, Aleppo, Syria" }
+  - { name: "Ola Alaa Hamad", aff: "Dept. of Biotechnology Engineering, Faculty of Technical Engineering, University of Aleppo, Aleppo, Syria" }

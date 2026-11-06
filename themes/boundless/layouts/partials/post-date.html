@@ -1,0 +1,8 @@
+{{- /* A post date in the page language. Arabic uses the Levantine month names the rest of the site uses (تشرين الثاني, not نوفمبر). Context: the Page. */ -}}
+{{- $d := .Date -}}
+{{- if eq .Lang "ar" -}}
+{{- $m := slice "كانون الثاني" "شباط" "آذار" "نيسان" "أيار" "حزيران" "تموز" "آب" "أيلول" "تشرين الأول" "تشرين الثاني" "كانون الأول" -}}
+<time datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Day }} {{ index $m (sub (int $d.Month) 1) }} {{ $d.Year }}</time>
+{{- else -}}
+<time datetime="{{ $d.Format "2006-01-02" }}">{{ $d.Format "2 January 2006" }}</time>
+{{- end -}}

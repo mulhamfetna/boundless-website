@@ -47,3 +47,21 @@ A site overrides any of these by placing a file at the same path in its own fold
 - Sun once per page: the hand underline or the registration button.
 - The Sky frame crosses one corner of each main photo and turns ink inside it.
 - Real photos only. Replace social-media captures with camera originals under the same file names.
+
+## Blog posts
+
+Posts live in `content/blog/<slug>/index.{ar,en}.md` (page bundles, paired by `translationKey`).
+
+| Key | Effect |
+|---|---|
+| `title`, `lead`, `description` | Headline, intro under it, meta description and card text |
+| `seoTitle` | Shorter `<title>` for search results; the headline stays on the page |
+| `date`, `tags` | Publication date (Levantine month names in Arabic) and tag pills |
+| `stats` | Big numbers on the Ink band |
+| `paper` | Name of a record in `data/papers/`: adds the published-paper block (DOI, licence, abstract, keywords, authors as published, how to cite) and ScholarlyArticle structured data |
+| `faq` | `q`/`a` pairs shown on the page and emitted as FAQPage structured data. Answers may use `<bdi>` around English inside Arabic |
+| `project` | A project slug (`src1`): adds a related-project card |
+| `corner`, `imageRatio`, `imagePos` | Frame corner (default `bl`), cover aspect ratio (default `3/4`) and CSS object-position (default `top`) |
+| `imageAlt` | Alt text for `cover.jpg` (or .png/.webp) placed in the post folder. With a cover, the hero shows it in the Sky frame and it becomes the sharing image |
+
+Every post page also emits BlogPosting structured data and `article:*` meta tags (`partials/schema-post.html`).
