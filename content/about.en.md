@@ -64,6 +64,3 @@ Website: [mulhamfetna.com](https://mulhamfetna.com) · Email:
 - The research fellowship of the [second camp](/en/projects/src2/)
 - The **Boundless Research Blog**: articles and guides written by our research
   community
-- [Global Entrepreneurship Week Syria 2026](/en/projects/gew/): our team is now an
-  official local partner of the global event, organised in Syria by Startup Syria,
-  where we bring entrepreneurship and research to one table

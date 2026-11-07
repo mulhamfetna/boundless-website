@@ -20,7 +20,7 @@ for d in "" "en/"; do
 done
 
 assert_file_contains "GEW uses the official Arabic name" "$OUT/projects/gew/index.html" "الأسبوع العالمي لريادة الأعمال"
-assert_file_contains "GEW shows the 2026 dates" "$OUT/en/projects/gew/index.html" "1–5 November 2026"
+assert_file_contains "GEW shows the dates of our events" "$OUT/en/projects/gew/index.html" "1–3 November 2026"
 assert_file_contains "SRC2 lists UNFPA as supporter and funder" "$OUT/en/projects/src2/index.html" "UNFPA"
 assert_file_contains "SRC1 states the Q2 quartile" "$OUT/en/projects/src1/index.html" "Q2"
 assert_file_contains "footer links the founder's website" "$OUT/en/index.html" "mulhamfetna.com"
