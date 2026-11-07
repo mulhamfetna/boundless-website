@@ -45,4 +45,15 @@ assert_file_contains "SRC2 post names UNFPA as funder (Arabic)" "$OUT/$P2" "صن
 assert_file_not_contains "SRC2 post does not name UNDP as funder" "$OUT/$P2" "الإنمائي"
 assert_file_contains "English SRC2 post names UNFPA" "$OUT/en/$P2" "UNFPA Syria"
 
+# Third post: SRC1 camp closing (13 Feb 2026).
+P3="blog/src1-camp-closing/index.html"
+for d in "" "en/"; do
+  f="$OUT/${d}$P3"
+  assert_file_exists "${d:-ar/} SRC1 closing post" "$f"
+  assert_file_contains "${d:-ar/} SRC1 post carries BlogPosting data" "$f" '"@type":"BlogPosting"'
+  assert_file_contains "${d:-ar/} SRC1 post has a cover image" "$f" 'src1-camp-closing/cover.jpg'
+  assert_file_contains "${d:-ar/} SRC1 post is dated 13 Feb 2026" "$f" '2026-02-13'
+done
+assert_file_contains "SRC1 post uses the brand spelling of the founder's name" "$OUT/$P3" "م. ملهم فتنة"
+
 finish
