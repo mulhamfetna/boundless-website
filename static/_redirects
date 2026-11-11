@@ -1,0 +1,4 @@
+# Live-game short link used on the PB101 slides (QR codes point here).
+# Before each session, replace /pb101/ with the Slido event link, e.g. https://app.sli.do/event/XXXXXX
+/live /pb101/ 302
+/live/ /pb101/ 302
