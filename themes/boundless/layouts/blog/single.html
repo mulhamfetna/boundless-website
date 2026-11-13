@@ -29,13 +29,38 @@
 </div></section>
 {{- end }}
 
-<section><div class="wrap"><div class="prose">{{ .Content }}</div></div></section>
+<section class="post-sec"><div class="wrap post-body">
+  <div class="prose">{{ .Content }}</div>
+  <aside class="post-aside" aria-label="{{ i18n "aboutThisPost" }}">
+    {{- with .TableOfContents }}{{ if findRE "<li>" . }}
+    <div class="aside-card toc"><p class="aside-h" id="toc-h">{{ i18n "onThisPage" }}</p>{{ replace . "<nav id=\"TableOfContents\">" "<nav id=\"TableOfContents\" aria-labelledby=\"toc-h\">" | safeHTML }}</div>
+    {{- end }}{{ end }}
+    {{- with $paper }}
+    <div class="aside-card">
+      <p class="aside-h">{{ if eq .kind "poster" }}{{ i18n "thePoster" }}{{ else }}{{ i18n "thePaper" }}{{ end }}</p>
+      <p class="aside-meta"><bdi>{{ if eq .kind "poster" }}{{ .event }}{{ else }}{{ .journal }}{{ end }}</bdi></p>
+      <a class="pill secondary" href="https://doi.org/{{ .doi }}" rel="noopener">{{ if eq .kind "poster" }}{{ i18n "readPoster" }}{{ else }}{{ i18n "readPaper" }}{{ end }}</a>
+    </div>
+    {{- end }}
+    {{- $u := .Permalink | urlquery }}
+    <div class="aside-card">
+      <p class="aside-h">{{ i18n "share" }}</p>
+      <ul class="share">
+        <li><a href="https://wa.me/?text={{ $u }}" rel="noopener" target="_blank">WhatsApp</a></li>
+        <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $u }}" rel="noopener" target="_blank">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ $u }}" rel="noopener" target="_blank">Facebook</a></li>
+        <li><a href="https://x.com/intent/post?url={{ $u }}" rel="noopener" target="_blank">X</a></li>
+      </ul>
+    </div>
+  </aside>
+</div></section>
 
 {{- with $paper }}
 {{- $poster := eq .kind "poster" }}
 <section class="paper-sec" aria-labelledby="paper-h"><div class="wrap">
   <div class="sec-head"><h2 id="paper-h">{{ if $poster }}{{ i18n "thePoster" }}{{ else }}{{ i18n "thePaper" }}{{ end }}</h2><p>{{ if $poster }}{{ i18n "posterNote" }}{{ else }}{{ i18n "paperNote" }}{{ end }}</p></div>
   <div class="paper" lang="en" dir="ltr">
+    {{- if eq $.Lang "ar" }}<p class="orig-badge" lang="ar" dir="rtl">{{ i18n "originalEnglish" }}</p>{{ end }}
     <p class="paper-title">{{ .title }}</p>
     {{- if $poster }}
     <p class="paper-cite">Poster presented at the <i>{{ .event }}</i> ({{ .session | lower }}), {{ .eventVenue }}, {{ .eventDates }}. {{ .institution }}.</p>
@@ -45,6 +70,17 @@
       <li><span>Status</span>{{ .status }}</li>
     </ul>
     <div class="pills"><a class="pill sun" href="https://doi.org/{{ .doi }}" rel="noopener">{{ i18n "readPoster" }}</a></div>
+    {{- with $.Resources.GetMatch "poster.*" }}
+    {{- $thumb := .Resize "640x webp q80" }}
+    <figure class="poster-thumb">
+      <a href="#poster-full" aria-label="{{ i18n "enlargePoster" }}"><img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ i18n "posterAlt" }}" loading="lazy"></a>
+      <figcaption dir="auto">{{ i18n "enlargePoster" }}</figcaption>
+    </figure>
+    <div class="lightbox" id="poster-full" role="dialog" aria-label="{{ i18n "thePoster" }}">
+      <a class="lightbox-close" href="#paper-h">{{ i18n "close" }} ✕</a>
+      <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="{{ i18n "posterAlt" }}" loading="lazy">
+    </div>
+    {{- end }}
 
     <h3>Poster summary</h3>
     {{- else }}

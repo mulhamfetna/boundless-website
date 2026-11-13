@@ -229,3 +229,31 @@ a.card:hover{border-color:var(--bl-text-accent)}
 .faq-item p{margin:0;font-size:17px;line-height:1.75;color:var(--bl-text-muted)}
 .card.related{max-width:520px}
 .card.related .meta{display:flex;flex-wrap:wrap;gap:10px}
+
+/* Blog post body: reading column plus a sticky side column (contents, the paper or poster, share) */
+.post-body{display:grid;grid-template-columns:minmax(0,760px) minmax(240px,320px);justify-content:space-between;gap:72px;align-items:start}
+.post-aside{position:sticky;top:32px;display:flex;flex-direction:column;gap:18px}
+.aside-card{background:var(--bl-surface-raised);border:2px solid var(--bl-line);border-radius:var(--bl-radius-card);padding:24px 26px;display:flex;flex-direction:column;gap:12px}
+.aside-card .pill{min-height:44px;padding:10px 22px;font-size:16px}
+.aside-h{margin:0;font-weight:700;font-size:16px;color:var(--bl-text-muted)}
+.aside-meta{margin:0;font-size:16px;line-height:1.5;color:var(--bl-text)}
+.toc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.toc a{color:var(--bl-text);text-decoration:none;font-size:16px;line-height:1.5}
+.toc a:hover{color:var(--bl-text-accent);text-decoration:underline}
+.share{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.share a{display:inline-flex;align-items:center;min-height:40px;padding:6px 16px;border:2px solid var(--bl-line);border-radius:var(--bl-radius-tag);color:var(--bl-text);text-decoration:none;font-weight:700;font-size:15px}
+.share a:hover{border-color:var(--bl-text-accent);color:var(--bl-text-accent)}
+@media (max-width:1000px){.post-body{grid-template-columns:minmax(0,1fr);gap:40px}.post-aside{position:static}.post-aside .toc{display:none}}
+/* Stats: an odd last number takes the whole row on phones, so 3 numbers never leave a hole */
+@media (max-width:700px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats>.stat:last-child:nth-child(odd){grid-column:1/-1}}
+/* Paper card: language badge, poster thumbnail and a no-script lightbox */
+.orig-badge{align-self:flex-start;margin:0;background:var(--bl-tag-bg);color:var(--bl-text-accent);font-size:14px;font-weight:700;padding:6px 14px;border-radius:var(--bl-radius-tag)}
+[dir=rtl] .paper .orig-badge{align-self:flex-end}
+.poster-thumb{margin:4px 0 0;display:flex;flex-direction:column;gap:8px;max-width:320px}
+.poster-thumb img{display:block;width:100%;height:auto;border:2px solid var(--bl-line);border-radius:16px}
+.poster-thumb a:hover img{border-color:var(--bl-text-accent)}
+.poster-thumb figcaption{font-size:14px;color:var(--bl-text-muted)}
+.lightbox{display:none}
+.lightbox:target{display:flex;position:fixed;inset:0;z-index:50;background:color-mix(in srgb,var(--bl-color-ink) 92%,transparent);padding:56px 20px 20px;align-items:flex-start;justify-content:center;overflow:auto}
+.lightbox img{max-width:min(1100px,100%);height:auto;border-radius:12px;background:var(--bl-color-white)}
+.lightbox-close{position:fixed;top:14px;right:20px;background:var(--bl-surface-raised);color:var(--bl-text);padding:8px 18px;border-radius:var(--bl-radius-tag);font-weight:700;text-decoration:none}

@@ -79,4 +79,20 @@ assert_file_contains "Arabic poster post shows the conference label" "$OUT/$P4" 
 assert_file_contains "journal post still shows its licence" "$OUT/$POST" 'open access'
 assert_file_not_contains "journal post is not marked as a poster" "$OUT/$POST" 'Conference poster'
 
+# Post layout: side column with contents and share links, poster thumbnail with a lightbox,
+# a badge on the English card in Arabic pages, and a fourth number on the poster post.
+for d in "" "en/"; do
+  f="$OUT/${d}$P4"
+  assert_file_contains "${d:-ar/} poster post has the side column" "$f" 'class="post-aside"'
+  assert_file_contains "${d:-ar/} poster post lists its sections" "$f" 'id="TableOfContents"'
+  assert_file_contains "${d:-ar/} poster post has share links" "$f" 'linkedin.com/sharing/share-offsite'
+  assert_file_contains "${d:-ar/} poster post shows a poster thumbnail" "$f" 'class="poster-thumb"'
+  assert_file_contains "${d:-ar/} poster post opens the poster in a lightbox" "$f" 'id="poster-full"'
+  assert_file_contains "${d:-ar/} poster post shows four numbers" "$f" '84.6%'
+done
+assert_file_contains "Arabic poster card says the text is the original English" "$OUT/$P4" 'class="orig-badge"'
+assert_file_not_contains "English poster card has no language badge" "$OUT/en/$P4" 'class="orig-badge"'
+assert_file_contains "journal post also gets the side column" "$OUT/$POST" 'class="post-aside"'
+assert_file_not_contains "journal post has no poster thumbnail" "$OUT/$POST" 'class="poster-thumb"'
+
 finish

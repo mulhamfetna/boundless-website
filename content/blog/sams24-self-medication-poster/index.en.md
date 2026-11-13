@@ -16,6 +16,7 @@ corner: "tr"
 stats:
   - { value: "999", label: "adults in Aleppo City surveyed" }
   - { value: "48%", label: "used medicines without a prescription in 3 months" }
+  - { value: "84.6%", label: "of them used analgesics, the most common" }
   - { value: "38.1%", label: "of them used antibiotics without medical supervision" }
 faq:
   - q: "What is the poster's title, and where was it presented?"
