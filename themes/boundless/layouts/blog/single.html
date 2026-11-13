@@ -104,7 +104,10 @@
     <h3>How to cite</h3>
     {{- $first := index .authors 0 }}{{ $fam := index (last 1 (split $first.name " ")) 0 }}
     {{- if $poster }}
-    <p class="cite">{{ $fam }}, {{ substr $first.name 0 1 }}., et al. ({{ .year }}). {{ .title }} [Poster]. {{ .event }}, Aleppo, Syria. https://doi.org/{{ .doi }}</p>
+    {{- $names := slice }}{{ range .authors }}{{ with .cite }}{{ $names = $names | append . }}{{ end }}{{ end }}
+    {{- $who := printf "%s, %s., et al." $fam (substr $first.name 0 1) }}
+    {{- if and (eq (len $names) (len .authors)) (gt (len $names) 1) }}{{ $who = printf "%s, & %s" (delimit (first (sub (len $names) 1) $names) ", ") (index (last 1 $names) 0) }}{{ end }}
+    <p class="cite">{{ $who }} ({{ .year }}). {{ .title }} [Poster]. {{ .event }}, Aleppo, Syria. https://doi.org/{{ .doi }}</p>
     {{- else }}
     <p class="cite">{{ $fam }}, {{ substr $first.name 0 1 }}., et al. ({{ .year }}). {{ .title }}. <i>{{ .journal }}</i>, <i>{{ .volume }}</i>, {{ .article }}. https://doi.org/{{ .doi }}</p>
     {{- end }}

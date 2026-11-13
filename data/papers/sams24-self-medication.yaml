@@ -4,6 +4,8 @@
 # Author names and order are as in the DataCite record and the PDF.
 # The full paper is not yet published; this record is the poster only.
 # The summary below is written from the poster's sections; numbers are the poster's.
+# cite = the author's name in APA form (family name, initial); "How to cite" lists every author
+# when each one has it, because two of the family names have two words.
 
 kind: poster
 title: "Determinants, Patterns, and Perceived Safety of Self-Medication among Adults in Aleppo City, Syria"
@@ -40,14 +42,14 @@ abstract:
   - h: "Results"
     t: "480 of the 999 participants (48.0%) had self-medicated in the previous 3 months. Among them, analgesics were the most used drugs (84.6%), followed by flu and decongestant medicines, antipyretics (52.1%) and antibiotics (38.1%). The most common complaints were headache (66.5%), cold and flu (64.4%), body aches (45.2%), cough (40.6%) and digestive complaints (33.3%). 19.2% of self-medication users had a chronic disease. 74.8% read the drug leaflet and 72.3% would recommend self-medication to others."
   - h: "Conclusion"
-    t: "Self-medication in Aleppo was lower than in the Damascus reference (67.3%) but comparable to regional estimates, and more common among women and adults aged 18–25. Unsupervised antibiotic use raises serious concerns about antimicrobial resistance in Syria, where resistance rates are high, and misuse such as stopping early or repeating doses may lead to poor outcomes and toxicity."
+    t: "Self-medication in Aleppo was lower than in the hospital-based Damascus reference (67.3%) but comparable to regional estimates, and more common among women and adults aged 18–25. Unsupervised antibiotic use raises serious concerns about antimicrobial resistance in Syria, where resistance rates are high, and misuse such as stopping early or repeating doses may lead to poor outcomes and toxicity."
 
 authors:
-  - { name: "Mais Markabi", corresponding: true }
-  - { name: "Alaa Buz Khalloof" }
-  - { name: "Jinan Alammouri" }
-  - { name: "Mulham Fetna" }
-  - { name: "Sara Kourany" }
-  - { name: "Tasneem Maktabi" }
-  - { name: "Zainab Shikh Dibs" }
-  - { name: "Wassim Abdelwahed" }
+  - { name: "Mais Markabi", cite: "Markabi, M.", corresponding: true }
+  - { name: "Alaa Buz Khalloof", cite: "Buz Khalloof, A." }
+  - { name: "Jinan Alammouri", cite: "Alammouri, J." }
+  - { name: "Mulham Fetna", cite: "Fetna, M." }
+  - { name: "Sara Kourany", cite: "Kourany, S." }
+  - { name: "Tasneem Maktabi", cite: "Maktabi, T." }
+  - { name: "Zainab Shikh Dibs", cite: "Shikh Dibs, Z." }
+  - { name: "Wassim Abdelwahed", cite: "Abdelwahed, W." }

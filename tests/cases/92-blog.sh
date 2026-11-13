@@ -95,4 +95,16 @@ assert_file_not_contains "English poster card has no language badge" "$OUT/en/$P
 assert_file_contains "journal post also gets the side column" "$OUT/$POST" 'class="post-aside"'
 assert_file_not_contains "journal post has no poster thumbnail" "$OUT/$POST" 'class="poster-thumb"'
 
+# Poster post wording (13 Nov review): full APA author list, Arabic names and the local term
+# for antibiotics in the Arabic text, and the Damascus study described as hospital-based.
+for d in "" "en/"; do
+  assert_file_contains "${d:-ar/} poster citation lists every author" "$OUT/${d}$P4" "Markabi, M., Buz Khalloof, A., Alammouri, J., Fetna, M., Kourany, S., Maktabi, T., Shikh Dibs, Z., &amp; Abdelwahed, W. (2026)"
+done
+assert_file_contains "Arabic poster post names the team in Arabic" "$OUT/$P4" "آلاء بوظ خلوف"
+assert_file_contains "Arabic poster post uses the term صادات حيوية" "$OUT/$P4" "صادات حيوية"
+assert_file_not_contains "Arabic poster post no longer says مضادات حيوية" "$OUT/$P4" "مضادات حيوية"
+assert_file_contains "Arabic poster post calls the Damascus study hospital-based" "$OUT/$P4" "أُجريت في المشافي"
+assert_file_contains "English poster post calls the Damascus study hospital-based" "$OUT/en/$P4" "hospital-based Damascus reference study"
+assert_file_contains "journal post keeps its et al. citation" "$OUT/$POST" "et al. (2026)"
+
 finish

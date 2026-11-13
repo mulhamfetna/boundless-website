@@ -24,7 +24,7 @@ faq:
   - q: "Who did the research?"
     a: "It began as a graduation project by students of the Faculty of Pharmacy, University of Aleppo, supervised by Dr. Wassim Abdelwahed, and was developed into a poster led by Mais Markabi as first and corresponding author. Authors in order: Mais Markabi, Alaa Buz Khalloof, Jinan Alammouri, Mulham Fetna, Sara Kourany, Tasneem Maktabi, Zainab Shikh Dibs, Wassim Abdelwahed."
   - q: "What are the main findings?"
-    a: "Of 999 adults surveyed in Aleppo City, 48% had used medicines without a prescription in the previous 3 months. Analgesics were the most used (84.6%), and 38.1% of self-medicating adults used antibiotics without medical supervision. The rate was lower than in the Damascus reference study (67.3%), and higher among women and adults aged 18–25."
+    a: "Of 999 adults surveyed in Aleppo City, 48% had used medicines without a prescription in the previous 3 months. Analgesics were the most used (84.6%), and 38.1% of self-medicating adults used antibiotics without medical supervision; 72.3% would recommend self-medication to others. The rate was lower than in the hospital-based Damascus reference study (67.3%), and higher among women and adults aged 18–25."
   - q: "Has the full paper been published?"
     a: "Not yet. The poster can be downloaded through its DOI, 10.13140/RG.2.2.16539.22567."
   - q: "How is Boundless connected to this research?"
@@ -52,7 +52,7 @@ The team studied the 3-month prevalence of self-medication among adults in Alepp
 - Analgesics were the most used (84.6%), followed by flu and decongestant medicines, antipyretics (52.1%) and **antibiotics (38.1%)**.
 - The most common reasons: headache (66.5%), cold and flu (64.4%) and body aches (45.2%).
 - 74.8% read the drug leaflet, and 72.3% would recommend self-medication to others.
-- The rate in Aleppo was lower than in the Damascus reference study (67.3%), and higher among women and adults aged 18–25.
+- The rate in Aleppo was lower than in the hospital-based Damascus reference study (67.3%), and higher among women and adults aged 18–25.
 
 ## Why it matters
 
