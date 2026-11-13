@@ -1,0 +1,53 @@
+# Conference poster by an SRC1 graduate (first and corresponding author: Mais Markabi).
+# Source of truth: the poster PDF supplied by the team (13 Nov 2026) and its DataCite record
+# for DOI 10.13140/RG.2.2.16539.22567 (ResearchGate, resourceType "Poster", 2026), checked 2026-11-13.
+# Author names and order are as in the DataCite record and the PDF.
+# The full paper is not yet published; this record is the poster only.
+# The summary below is written from the poster's sections; numbers are the poster's.
+
+kind: poster
+title: "Determinants, Patterns, and Perceived Safety of Self-Medication among Adults in Aleppo City, Syria"
+doi: "10.13140/RG.2.2.16539.22567"
+url: "https://www.researchgate.net/doi/10.13140/RG.2.2.16539.22567"
+repository: "ResearchGate"
+year: "2026"
+datePublished: "2026"
+institution: "University of Aleppo, Faculty of Pharmacy"
+event: "SAMS 24th International Conference"
+eventOrganizer: "Syrian American Medical Society (SAMS)"
+eventVenue: "Faculty of Medicine, University of Aleppo, Aleppo, Syria"
+eventStart: "2026-06-27"
+eventEnd: "2026-06-29"
+eventDates: "27–29 June 2026"
+session: "Scientific poster exhibition"
+status: "The full paper has not been published yet."
+
+keywords:
+  - "Self-medication"
+  - "Antibiotics"
+  - "Antimicrobial resistance"
+  - "Aleppo"
+  - "Syria"
+  - "Cross-sectional survey"
+
+abstract:
+  - h: "Background"
+    t: "The WHO defines self-medication as using drugs for self-diagnosed conditions, or the intermittent or continuous use of prescribed drugs for chronic or recurrent conditions, often without a current prescription. It can save time and money, but it can also cause misuse, delayed diagnosis and serious complications."
+  - h: "Objectives"
+    t: "To estimate the 3-month prevalence of self-medication among adults in Aleppo City; identify its sociodemographic and access-related determinants; describe the most common drug categories and indications; and assess perceived safety and attitudes, such as reading the drug leaflet and recommending self-medication to others."
+  - h: "Methods"
+    t: "A descriptive cross-sectional survey of 999 randomly selected adults aged 18–85 in Aleppo City, from 27 March to 9 May 2025, using an Arabic questionnaire adapted from validated instruments, distributed electronically and through direct interviews with informed consent and anonymity. Analysis used proportions with 95% confidence intervals, chi-square tests with Cramér's V, logistic regression with backward elimination, and two-proportion z-tests against a Damascus hospital-based reference study."
+  - h: "Results"
+    t: "480 of the 999 participants (48.0%) had self-medicated in the previous 3 months. Among them, analgesics were the most used drugs (84.6%), followed by flu and decongestant medicines, antipyretics (52.1%) and antibiotics (38.1%). The most common complaints were headache (66.5%), cold and flu (64.4%), body aches (45.2%), cough (40.6%) and digestive complaints (33.3%). 19.2% of self-medication users had a chronic disease. 74.8% read the drug leaflet and 72.3% would recommend self-medication to others."
+  - h: "Conclusion"
+    t: "Self-medication in Aleppo was lower than in the Damascus reference (67.3%) but comparable to regional estimates, and more common among women and adults aged 18–25. Unsupervised antibiotic use raises serious concerns about antimicrobial resistance in Syria, where resistance rates are high, and misuse such as stopping early or repeating doses may lead to poor outcomes and toxicity."
+
+authors:
+  - { name: "Mais Markabi", corresponding: true }
+  - { name: "Alaa Buz Khalloof" }
+  - { name: "Jinan Alammouri" }
+  - { name: "Mulham Fetna" }
+  - { name: "Sara Kourany" }
+  - { name: "Tasneem Maktabi" }
+  - { name: "Zainab Shikh Dibs" }
+  - { name: "Wassim Abdelwahed" }

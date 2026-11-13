@@ -29,5 +29,9 @@ journal: Journal
 thePaper: The published paper
 paperNote: The paper's details as published by the journal.
 readPaper: Read the full paper
+conference: Conference
+thePoster: The scientific poster
+posterNote: The poster's details as presented at the conference.
+readPoster: Download the poster
 faq: Frequently asked questions
 relatedProject: Related project

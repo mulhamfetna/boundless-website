@@ -11,7 +11,11 @@
     <ul class="facts">
       <li><span>{{ i18n "postDate" }}</span>{{ partial "post-date.html" . }}</li>
       {{- with $paper }}
+      {{- if eq .kind "poster" }}
+      <li><span>{{ i18n "conference" }}</span><bdi>{{ .event }}</bdi></li>
+      {{- else }}
       <li><span>{{ i18n "journal" }}</span><bdi>{{ .journal }}</bdi></li>
+      {{- end }}
       <li><span>DOI</span><a class="ltr" href="https://doi.org/{{ .doi }}" rel="noopener">{{ .doi }}</a></li>
       {{- end }}
     </ul>
@@ -28,10 +32,22 @@
 <section><div class="wrap"><div class="prose">{{ .Content }}</div></div></section>
 
 {{- with $paper }}
+{{- $poster := eq .kind "poster" }}
 <section class="paper-sec" aria-labelledby="paper-h"><div class="wrap">
-  <div class="sec-head"><h2 id="paper-h">{{ i18n "thePaper" }}</h2><p>{{ i18n "paperNote" }}</p></div>
+  <div class="sec-head"><h2 id="paper-h">{{ if $poster }}{{ i18n "thePoster" }}{{ else }}{{ i18n "thePaper" }}{{ end }}</h2><p>{{ if $poster }}{{ i18n "posterNote" }}{{ else }}{{ i18n "paperNote" }}{{ end }}</p></div>
   <div class="paper" lang="en" dir="ltr">
     <p class="paper-title">{{ .title }}</p>
+    {{- if $poster }}
+    <p class="paper-cite">Poster presented at the <i>{{ .event }}</i> ({{ .session | lower }}), {{ .eventVenue }}, {{ .eventDates }}. {{ .institution }}.</p>
+    <ul class="facts">
+      <li><span>DOI</span><a href="https://doi.org/{{ .doi }}" rel="noopener">{{ .doi }}</a></li>
+      <li><span>Repository</span>{{ .repository }}</li>
+      <li><span>Status</span>{{ .status }}</li>
+    </ul>
+    <div class="pills"><a class="pill sun" href="https://doi.org/{{ .doi }}" rel="noopener">{{ i18n "readPoster" }}</a></div>
+
+    <h3>Poster summary</h3>
+    {{- else }}
     <p class="paper-cite"><i>{{ .journal }}</i>, vol. {{ .volume }}, art. {{ .article }} ({{ .issueDate }}). {{ .publisher }}. Published online {{ time.Format "2 January 2006" .datePublished }}.</p>
     <ul class="facts">
       <li><span>DOI</span><a href="https://doi.org/{{ .doi }}" rel="noopener">{{ .doi }}</a></li>
@@ -41,16 +57,21 @@
     <div class="pills"><a class="pill sun" href="https://doi.org/{{ .doi }}" rel="noopener">{{ i18n "readPaper" }}</a></div>
 
     <h3>Abstract</h3>
+    {{- end }}
     <div class="abstract">{{ range .abstract }}<p><b>{{ .h }}.</b> {{ .t | safeHTML }}</p>{{ end }}</div>
     {{- with .keywords }}<h3>Keywords</h3><ul class="chips">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
 
     <h3>Authors</h3>
     <ol class="authors">{{ range .authors }}<li><b>{{ .name }}{{ if .corresponding }}*{{ end }}</b>{{ with .aff }}<span>{{ . }}</span>{{ end }}</li>{{ end }}</ol>
-    <p class="paper-cite">* Corresponding author.</p>
+    <p class="paper-cite">* Corresponding author.{{ if $poster }} {{ .institution }}.{{ end }}</p>
 
     <h3>How to cite</h3>
     {{- $first := index .authors 0 }}{{ $fam := index (last 1 (split $first.name " ")) 0 }}
+    {{- if $poster }}
+    <p class="cite">{{ $fam }}, {{ substr $first.name 0 1 }}., et al. ({{ .year }}). {{ .title }} [Poster]. {{ .event }}, Aleppo, Syria. https://doi.org/{{ .doi }}</p>
+    {{- else }}
     <p class="cite">{{ $fam }}, {{ substr $first.name 0 1 }}., et al. ({{ .year }}). {{ .title }}. <i>{{ .journal }}</i>, <i>{{ .volume }}</i>, {{ .article }}. https://doi.org/{{ .doi }}</p>
+    {{- end }}
   </div>
 </div></section>
 {{- end }}

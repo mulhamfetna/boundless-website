@@ -37,13 +37,30 @@
     "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .doi)
     "datePublished" .datePublished
     "inLanguage" "en"
-    "isAccessibleForFree" true
-    "license" .licenseUrl
     "keywords" (delimit .keywords ", ")
     "abstract" (delimit $abs " ")
     "author" $authors
-    "isPartOf" (dict "@type" "PublicationVolume" "volumeNumber" .volume "isPartOf" (dict "@type" "Periodical" "name" .journal "issn" .issn "publisher" (dict "@type" "Organization" "name" .publisher)))
   -}}
+  {{- if eq .kind "poster" -}}
+    {{- $art = merge $art (dict "genre" "Conference poster" "sourceOrganization" (dict "@type" "Organization" "name" .institution)) -}}
+    {{- $event := dict
+      "@type" "Event"
+      "@id" (printf "%s#event" $.Permalink)
+      "name" .event
+      "startDate" .eventStart
+      "endDate" .eventEnd
+      "eventAttendanceMode" "https://schema.org/OfflineEventAttendanceMode"
+      "location" (dict "@type" "Place" "name" .eventVenue "address" (dict "@type" "PostalAddress" "addressLocality" "Aleppo" "addressCountry" "SY"))
+      "organizer" (dict "@type" "Organization" "name" .eventOrganizer)
+      "workFeatured" (dict "@id" (printf "https://doi.org/%s" .doi))
+    -}}
+    {{- $graph = $graph | append $event -}}
+  {{- else -}}
+    {{- $art = merge $art (dict
+      "isAccessibleForFree" true
+      "license" .licenseUrl
+      "isPartOf" (dict "@type" "PublicationVolume" "volumeNumber" .volume "isPartOf" (dict "@type" "Periodical" "name" .journal "issn" .issn "publisher" (dict "@type" "Organization" "name" .publisher)))) -}}
+  {{- end -}}
   {{- $post = merge $post (dict "about" (dict "@id" (printf "https://doi.org/%s" .doi)) "citation" (dict "@id" (printf "https://doi.org/%s" .doi))) -}}
   {{- $graph = $graph | append $art -}}
 {{- end }}{{ end -}}
