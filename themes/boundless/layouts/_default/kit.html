@@ -31,7 +31,7 @@
 
     {{ with .Params.privacy }}<p class="kit-note kit-privacy">{{ . }}</p>{{ end }}
     {{ with .Params.attribution }}<p class="kit-attr">{{ . }}</p>{{ end }}
-    <p class="kit-tags ltr">#GEW2026 #GEWSyria #StartupSyria #EntrepreneursThriveHere</p>
+    {{ with .Params.hashtags }}<p class="kit-tags" dir="auto">{{ . }}</p>{{ end }}
   </div>
 </div></section>
 {{ end }}
