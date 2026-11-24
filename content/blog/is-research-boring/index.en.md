@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "is-research-boring"
 tags: ["Researcher's guide"]
 weight: 3
+draft: true
 ---
 
 If you think scientific research is boring, it's probably because you learned it as a university assignment rather than as a way to understand the world.

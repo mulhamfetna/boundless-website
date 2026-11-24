@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "objectivity"
 tags: ["Researcher's guide"]
 weight: 8
+draft: true
 ---
 
 ## What is objectivity?

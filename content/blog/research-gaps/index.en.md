@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "research-gaps"
 tags: ["Researcher's guide"]
 weight: 1
+draft: true
 ---
 
 When you read a scientific study, your attention usually goes to the results. But every study holds a treasure that most readers miss.

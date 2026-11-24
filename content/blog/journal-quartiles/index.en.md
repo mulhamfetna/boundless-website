@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "journal-quartiles"
 tags: ["Researcher's guide"]
 weight: 7
+draft: true
 ---
 
 The journal you publish in can completely change the value of your paper. So what do these codes mean?

@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "rejection-mistakes"
 tags: ["دليل الباحث"]
 weight: 5
+draft: true
 ---
 
 قبل أن ترسل بحثك للنشر، تأكّد أنك لم تقع في أيٍّ من هذه الأخطاء.

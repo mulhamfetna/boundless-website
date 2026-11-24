@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "researcher-journey"
 tags: ["Researcher's guide"]
 weight: 6
+draft: true
 ---
 
 Almost everyone who has written a paper has been through these stages. If you're in one of them right now, you're not alone.

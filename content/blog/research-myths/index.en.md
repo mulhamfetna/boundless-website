@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "research-myths"
 tags: ["Researcher's guide"]
 weight: 4
+draft: true
 ---
 
 We asked participants of the first Scientific Research Camp about their experience, and about the ideas they believed before they started. Here are the main ones, with what they discovered for themselves.

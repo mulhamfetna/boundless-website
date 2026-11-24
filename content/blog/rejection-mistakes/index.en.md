@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "rejection-mistakes"
 tags: ["Researcher's guide"]
 weight: 5
+draft: true
 ---
 
 Before you submit your paper, make sure you haven't made any of these mistakes.

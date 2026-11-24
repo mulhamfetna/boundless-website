@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "research-ideas"
 tags: ["Researcher's guide"]
 weight: 2
+draft: true
 ---
 
 A research idea doesn't just land on you. It grows out of a question, an observation or plain curiosity. So where do research ideas come from?

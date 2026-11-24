@@ -6,6 +6,7 @@ date: 2026-11-24
 slug: "objectivity"
 tags: ["دليل الباحث"]
 weight: 8
+draft: true
 ---
 
 ## ما هي الموضوعية؟
