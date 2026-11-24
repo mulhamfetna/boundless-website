@@ -27,3 +27,8 @@
   name = "من نحن"
   pageRef = "/about"
   weight = 10
+
+[[main]]
+  name = "الروابط"
+  pageRef = "/links"
+  weight = 11

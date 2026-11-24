@@ -15,7 +15,7 @@ for d in "" "en/"; do
   assert_file_exists "${d:-ar/} links page exists" "$f"
   assert_file_contains "${d:-ar/} links page has the WhatsApp community" "$f" "chat.whatsapp.com/K9appgmw9ZW7H362DjYca7"
   assert_file_contains "${d:-ar/} links page has Instagram" "$f" "instagram.com/boundless.academics"
-  assert_file_contains "${d:-ar/} links page has Facebook" "$f" "facebook.com/share/19g1TDgEC2"
+  assert_file_contains "${d:-ar/} links page has Facebook" "$f" "facebook.com/people/Boundless-Academic-Services/61580417326089"
   assert_file_contains "${d:-ar/} links page has the paper DOI" "$f" "10.1016/j.hybadv.2026.100657"
 done
 finish

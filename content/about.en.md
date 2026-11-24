@@ -37,8 +37,8 @@ free of charge.
   programme. Across our three projects we have worked with university professors,
   experts and people from industry.
 - **Connecting sectors.** Over the past two years we have, to a degree, connected
-  the NGO sector with the academic sector. Both research camps were incubated by
-  Sanad Youth and supported and funded by UNFPA Syria.
+  the NGO sector with the academic sector. Both research camps were supported and
+  incubated by Sanad Youth for Development and funded by UNFPA.
 - **From idea to publication.** Our research camps don't stop at training: they
   continue into a supervised fellowship that aims at a paper in a peer-reviewed
   journal.

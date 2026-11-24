@@ -5,7 +5,7 @@ ogImage = "images/og.png"
 email = "contact@boundlessacademic.com"
 sameAs = [
   "https://www.instagram.com/boundless.academics",
-  "https://www.facebook.com/share/1DNUL8uHi2/",
+  "https://www.facebook.com/people/Boundless-Academic-Services/61580417326089/",
 ]
 
 # Footer contact addresses. labelKey is an i18n key so the label follows the page language.
@@ -34,4 +34,4 @@ sameAs = [
 
 [[social]]
   name = "Facebook"
-  url = "https://www.facebook.com/share/1DNUL8uHi2/"
+  url = "https://www.facebook.com/people/Boundless-Academic-Services/61580417326089/"

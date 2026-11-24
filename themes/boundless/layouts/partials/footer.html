@@ -4,6 +4,7 @@
       <div class="about">
         <img src="{{ "brand/boundless-horizontal-reversed.svg" | relURL }}" alt="{{ site.Title }}" width="180" height="44">
         {{- with site.Params.footerText }}<p>{{ . }}</p>{{ end }}
+        <a class="pill on-dark" href="{{ "links/" | relLangURL }}">{{ i18n "allLinks" }}</a>
       </div>
       <div><b>{{ i18n "projects" }}</b>
         <ul>{{ range (where site.RegularPages "Section" "projects").ByWeight }}<li><a href="{{ .RelPermalink }}">{{ .Params.code | default .Title }}</a></li>{{ end }}</ul>
