@@ -6,7 +6,7 @@ weight: 2
 status: "running"
 mark: "Camp 2"
 summary: "56 youth researchers trained over 40 hours in 14 sessions, incubated by Sanad Youth and supported by UNFPA Syria. The research fellowship starts soon."
-lead: "56 youth researchers, from 90 who registered, trained over 40 hours in 14 sessions. Training is complete; the research fellowship has not started yet and starts soon."
+lead: "56 youth researchers, from 89 who registered, trained over 40 hours in 14 sessions. Training is complete; the research fellowship has not started yet and starts soon."
 image: "images/src2-hero-hammal.jpg"
 imageAlt: "Dr. Abdulrazzak Hammal leading a camp session"
 corner: "br"
@@ -18,7 +18,7 @@ facts:
   - { label: "Fee", value: "Free" }
   - { label: "Research fellowship", value: "Starts soon" }
 stats:
-  - { value: "90", label: "registered for the camp" }
+  - { value: "89", label: "registered for the camp" }
   - { value: "56", label: "youth researchers trained" }
   - { value: "40", label: "hours of training" }
   - { value: "14", label: "training sessions" }
