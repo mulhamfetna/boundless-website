@@ -20,7 +20,7 @@ faq:
   - q: "When did training for the second Scientific Research Camp end?"
     a: "On 11 October 2026. Training started in June 2026, paused in July for university exams, and was completed in August and September."
   - q: "What did the training cover, and who taught it?"
-    a: "40 hours in 14 sessions: foundations of applied scientific research with Dr. Abdulrazzaq Hammal, statistics and data analysis for researchers with Mazyat Kourani, and building researchers' professional digital presence and AI tools with Eng. Mulham Fetna."
+    a: "40 hours in 14 sessions: foundations of applied scientific research with Dr. Abdulrazzaq Hammal, statistics and data analysis for researchers with Mazeat Koreny, and building researchers' professional digital presence and AI tools with Eng. Mulham Fetna."
   - q: "Who supported the camp?"
     a: "It was funded by UNFPA Syria. Sanad Youth and Domains Center provided logistical support."
   - q: "What comes after the training?"
@@ -35,7 +35,7 @@ Forty training hours carried many adventures across the worlds of applied scient
 We thank the trainers, who played a key role in this project's success through rich scientific content, training hours, and support that continues into the research fellowship and the incubation of research projects. Your efforts were a key factor in our success.
 
 - Foundations of applied scientific research: Dr. Abdulrazzaq Hammal
-- Statistics and data analysis for researchers: Ms. Mazyat Kourani
+- Statistics and data analysis for researchers: Ms. Mazeat Koreny
 - Building researchers' professional digital presence: Eng. Mulham Fetna
 
 ## Thanks to our partners

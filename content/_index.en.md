@@ -28,7 +28,7 @@ tracks:
     - { icon: "", title: "Personal branding and academic correspondence", text: "A professional research profile on academic platforms, and correspondence that builds a working network." }
 projects:
   title: "Our projects"
-  lead: "Two research camps, incubated by Sanad Youth and supported and funded by UNFPA Syria. Our next project is Global Entrepreneurship Week, where we bring entrepreneurship and research to one table."
+  lead: "Two research camps, supported and incubated by Sanad Youth for Development and funded by UNFPA. Our next project is Global Entrepreneurship Week, where we bring entrepreneurship and research to one table."
 band:
   label: "How we work"
   title: "A volunteer team that works project by project"
@@ -44,7 +44,7 @@ band:
 partners:
   title: "We have worked with"
   items:
-    - { name: "Sanad Youth for Development", role: "Incubator · SRC1 · SRC2" }
-    - { name: "UNFPA Syria", role: "Supporter and funder · SRC1 · SRC2" }
+    - { name: "Sanad Youth for Development", role: "Support and incubation · SRC1 · SRC2" }
+    - { name: "UNFPA Syria", role: "Funder · SRC1 · SRC2" }
     - { name: "Startup Syria", role: "Global Entrepreneurship Week Syria 2026" }
 ---

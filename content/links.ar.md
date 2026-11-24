@@ -14,7 +14,7 @@ items:
     url: "https://www.instagram.com/boundless.academics"
   - name: "فيسبوك"
     sub: "facebook.com"
-    url: "https://www.facebook.com/share/19g1TDgEC2/"
+    url: "https://www.facebook.com/people/Boundless-Academic-Services/61580417326089/"
   - name: "الموقع الرسمي"
     sub: "boundlessacademic.com"
     url: "/"

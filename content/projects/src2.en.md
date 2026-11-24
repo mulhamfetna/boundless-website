@@ -26,7 +26,7 @@ sessionsTitle: "Training sessions"
 sessionsLead: "14 sessions across 40 hours of training."
 sessions:
   - { count: "6", title: "Applied research fundamentals", by: "Dr. Abdulrazzak Hammal" }
-  - { count: "2", title: "Data analytics and statistics for researchers", by: "Mazyat Kourani" }
+  - { count: "2", title: "Data analytics and statistics for researchers", by: "Mazeat Koreny" }
   - { count: "3", title: "AI tools for researchers", by: "Eng. Mulham Fetna" }
   - { count: "3", title: "Professional personal branding, outreach and research portfolio platforms", by: "Eng. Mulham Fetna" }
 peopleTitle: "Trainers and what they covered"
@@ -38,7 +38,7 @@ people:
       - "How journals are ranked, and how to choose one"
       - "From submission to publication, and why papers get rejected"
       - "The h-index, and publication-fee waivers"
-  - name: "Mazyat Kourani"
+  - name: "Mazeat Koreny"
     role: "Data analytics and statistics"
     bio:
       - "Why statistics matter in research, and the stages of a statistical study"
@@ -61,9 +61,9 @@ gallery:
   - { src: "images/src2-gallery-orientation.jpg", alt: "Eng. Mulham Fetna presenting the camp at the orientation session", caption: "Orientation session" }
   - { src: "images/src2-gallery-session.jpg", alt: "Participants of the second camp during a training session", caption: "Applied research fundamentals" }
 partners:
-  - { name: "Sanad Youth for Development", role: "Incubator" }
-  - { name: "UNFPA Syria", role: "Supporter and funder" }
-attribution: "Funded by UNFPA Syria and supported by Sanad Youth for Development."
+  - { name: "Sanad Youth for Development", role: "Support and incubation" }
+  - { name: "UNFPA Syria", role: "Funder" }
+attribution: "Supported and incubated by Sanad Youth for Development, and funded by UNFPA."
 ---
 ## Why this camp
 
